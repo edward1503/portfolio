@@ -75,23 +75,70 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 
 // contact form variables
+// const form = document.querySelector("[data-form]");
+// const formInputs = document.querySelectorAll("[data-form-input]");
+// const formBtn = document.querySelector("[data-form-btn]");
+
+// // add event to all form input field
+// for (let i = 0; i < formInputs.length; i++) {
+//   formInputs[i].addEventListener("input", function () {
+
+//     // check form validation
+//     if (form.checkValidity()) {
+//       formBtn.removeAttribute("disabled");
+//     } else {
+//       formBtn.setAttribute("disabled", "");
+//     }
+
+//   });
+// }
+// contact form variables
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
+// Initialize EmailJS with your User ID
+(function() {
+  emailjs.init("user_yourUserId"); // Replace with your EmailJS User ID
+})();
+
+// Add event to all form input fields
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
-
-    // check form validation
+    // Check form validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
       formBtn.setAttribute("disabled", "");
     }
-
   });
 }
+
+// Form submit event listener
+form.addEventListener("submit", function(e) {
+  e.preventDefault(); // Prevent the default form submission
+
+  // Ensure form validity before sending the email
+  if (form.checkValidity()) {
+    // Disable the button while sending the email
+    formBtn.setAttribute("disabled", "");
+
+    // Send the form data using EmailJS
+    emailjs.sendForm('service_40qb4bi', 'template_7px0v3d', form)
+      .then(function(response) {
+        console.log('Success:', response);
+        alert('Your message has been sent successfully!');
+      }, function(error) {
+        console.log('Error:', error);
+        alert('There was an error sending your message. Please try again later.');
+      })
+      .finally(function() {
+        formBtn.removeAttribute("disabled"); // Re-enable the button after sending
+      });
+  } else {
+    alert("Please fill out all the fields correctly.");
+  }
+});
 
 
 
@@ -116,3 +163,4 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
