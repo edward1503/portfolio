@@ -665,6 +665,21 @@
     height: 100%;
     border-radius: inherit;
   }
+  .skills-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .skills-column {
+    list-style: none;
+    padding: 0;
+    width: 45%; /* Adjust as needed */
+  }
+  
+  .skills-item {
+    margin-bottom: 15px;
+  }
   
   
   
