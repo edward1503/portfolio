@@ -1,964 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edward - Portfolio</title>
-
-  <!--
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
-
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!--
-    - google font link
-  -->
+  <meta name="description" content="Nguyen Don Duc, also known as Edward, is a Machine Learning Engineer, AI Engineer, and Data Scientist focused on practical AI systems.">
+  <meta property="og:title" content="Nguyen Don Duc | AI Engineer Portfolio">
+  <meta property="og:description" content="Machine learning, data science, and applied AI projects by Edward.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/142201083?v=4">
+  <title>Nguyen Don Duc | AI Engineer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317201b'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='700' fill='%23fbfaf6'%3EED%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="Go to top">
+      <span class="brand-mark">ED</span>
+      <span>Edward</span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <a href="#stack">Stack</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-action" href="https://github.com/edward1503" target="_blank" rel="noreferrer">GitHub</a>
+  </header>
 
-  <!--
-    - #MAIN
-  -->
-
-  <main>
-
-    <!--
-      - #SIDEBAR
-    -->
-
-    <aside class="sidebar" data-sidebar>
-
-      <div class="sidebar-info">
-
-        <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Nguyễn Đôn Đức" width="80">
-        </figure>
-
-        <div class="info-content">
-          <h1 class="name" title="Nguyễn Đôn Đức">Nguyễn Đôn Đức</h1>
-
-          <p class="title">Data Scientist</p>
-          <div class="separator" style="height: 8px; margin: 8px 0; background-color: transparent;"></div>
-          <ul class="social-list">
-
-            <li class="social-item">
-              <a href="https://www.facebook.com/ngdduc000/" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
-  
-            <li class="social-item">
-              <a href="https://www.linkedin.com/in/%C4%91%E1%BB%A9c-nguy%E1%BB%85n-053b60283/" class="social-link">
-                  <ion-icon name="logo-linkedin"></ion-icon>
-              </a>
-            </li>
-  
-            <li class="social-item">
-              <a href="https://github.com/edward1503" class="social-link">
-                <ion-icon name="logo-github"></ion-icon>
-              </a>
-            </li>
-  
-          </ul>
+  <main id="top">
+    <section class="hero section-grid" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Machine Learning Engineer / AI Engineer / Data Scientist</p>
+        <h1 id="hero-title">Nguyen Don Duc builds practical AI systems from data to deployment.</h1>
+        <p class="hero-lede">Fresher Data Science graduate focused on machine learning, deep learning, MLOps, and analytical products that make models usable beyond the notebook.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#work">View projects</a>
+          <a class="button secondary" href="mailto:nguyendonduc1503@gmail.com">Email me</a>
         </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-
       </div>
 
-      <div class="sidebar-info_more">
+      <aside class="profile-panel" aria-label="Profile summary">
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/142201083?v=4" alt="Nguyen Don Duc profile photo">
+        <div>
+          <p class="panel-kicker">Based in</p>
+          <h2>Ho Chi Minh City</h2>
+        </div>
+        <dl class="stats" aria-label="GitHub statistics">
+          <div>
+            <dt data-github-stat="repos">78</dt>
+            <dd>Public repos</dd>
+          </div>
+          <div>
+            <dt data-github-stat="followers">3</dt>
+            <dd>Followers</dd>
+          </div>
+          <div>
+            <dt>2023</dt>
+            <dd>GitHub since</dd>
+          </div>
+        </dl>
+        <div class="status-line">
+          <span></span>
+          Open to AI engineering and data roles
+        </div>
+      </aside>
+    </section>
 
-        <div class="separator"></div>
+    <section class="signal-band" aria-label="Professional focus">
+      <p>Python</p>
+      <p>PyTorch</p>
+      <p>Scikit-learn</p>
+      <p>FastAPI</p>
+      <p>Docker</p>
+      <p>DVC</p>
+      <p>PySpark</p>
+      <p>AWS / GCP</p>
+    </section>
 
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:nguyendonduc1503@gmail.com" class="contact-link">nguyendonduc1503@gmail.com</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-
-              <a href="tel:+84359993781" class="contact-link">(+84) 035 999 3781</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-
-              <time datetime="2004-03-15">March 15, 2004</time>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>District 11, Ho Chi Minh City, VietNam</address>
-            </div>
-
-          </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-        <!-- <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://www.facebook.com/ngdduc000/" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/%C4%91%E1%BB%A9c-nguy%E1%BB%85n-053b60283/" class="social-link">
-                <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://github.com/edward1503" class="social-link">
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-          </li>
-
-        </ul> -->
-
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <p class="eyebrow">Selected work</p>
+        <h2 id="work-title">Projects that show the shape of the craft.</h2>
+        <p>Curated from Edward's public GitHub profile and organized around search, data analysis, model explainability, and AI engineering practice.</p>
       </div>
 
-    </aside>
-
-
-
-
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-
-        </ul>
-
-      </nav>
-
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-          <p style="text-align: justify;">
-            I am an undergraduate student based in Ho Chi Minh City, seeking an internship opportunity in Data Analysis and AI Engineering. 
-            I am passionate about leveraging data to drive insights and solve complex problems using advanced analytical techniques and AI models.
-
-          </p>
-
-          <p style="text-align: justify;">
-            As I continue my academic journey, I am eager to apply my skills in data analysis, machine learning, 
-            and AI to real-world projects. I am excited to contribute to teams by transforming complex datasets into meaningful insights 
-            and building data-driven solutions that improve efficiency and decision-making. I am looking forward to gaining hands-on experience and learning from industry professionals while contributing to impactful projects.
-          </p>
-        </section>
-
-
-        <!--
-          - service
-        -->
-
-        <section class="service">
-
-          <h3 class="h3 service-title">What i'm doing</h3>
-
-          <ul class="service-list">
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/analysis.png
-                " alt="Data Analysis icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Data Analysis</h4>
-
-                <p class="service-item-text">
-                    Analyzing complex datasets to extract meaningful 
-                    insights and support data-driven decisions.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/chart.png" alt="Data Visualization icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Data Visualization</h4>
-
-                <p class="service-item-text">
-                    Creating intuitive and interactive visualizations 
-                    to communicate data insights effectively.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/chatbot.png" alt="ML icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Machine Learning</h4>
-
-                <p class="service-item-text">
-                    Developing machine learning models to 
-                    predict trends and automate tasks based on data.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/neuralnetwork.png" alt="DL icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Deep Learning</h4>
-
-                <p class="service-item-text">
-                    Implementing deep learning models for 
-                    advanced pattern recognition and complex problem solving.
-                </p>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-      
-      <!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
+      <div class="project-grid">
+        <article class="project-card featured">
+          <div class="project-topline">
+            <span>Python</span>
+            <a href="https://github.com/edward1503/vdt-meeting-search" target="_blank" rel="noreferrer">Repo</a>
           </div>
+          <h3>VDT Meeting Search</h3>
+          <p>A recent Python project for searching meeting content, positioned as a compact applied AI retrieval/search build.</p>
+          <ul class="tags">
+            <li>Search</li>
+            <li>Automation</li>
+            <li>Applied AI</li>
+          </ul>
+        </article>
 
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">University of Economics Ho Chi Minh City</h4>
-
-              <span>2022 — Present</span>
-
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
-              </p>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Experience</h3>
+        <article class="project-card">
+          <div class="project-topline">
+            <span>Python</span>
+            <a href="https://github.com/edward1503/bot-trading" target="_blank" rel="noreferrer">Repo</a>
           </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Library Assistant</h4>
-
-              <span>2023 — Present</span>
-
-              <p class="timeline-text">
-                Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas
-                molestias
-                exceptur.
-              </p>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="skill">
-
-          <h3 class="h3 skills-title">My skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Data Analysis</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Data Visualization</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Modeling</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Documenting</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
+          <h3>Bot Trading</h3>
+          <p>Automation-oriented trading work that combines Python, data signals, and system thinking.</p>
+          <ul class="tags">
+            <li>Python</li>
+            <li>Signals</li>
+            <li>Automation</li>
           </ul>
+        </article>
 
-        </section>
-
-      </article>
-
-      <!--
-        - #PORTFOLIO
-      -->
-
-      <article class="portfolio" data-page="portfolio">
-
-        <header>
-          <h2 class="h2 article-title">Portfolio</h2>
-        </header>
-
-        <section class="projects">
-
-          <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web design</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Applications</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web development</button>
-            </li>
-
-          </ul>
-
-          <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-
-            </button>
-
-            <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web design</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Applications</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web development</button>
-              </li>
-
-            </ul>
-
+        <article class="project-card">
+          <div class="project-topline">
+            <span>Jupyter</span>
+            <a href="https://github.com/edward1503/xAI-credit-risk" target="_blank" rel="noreferrer">Repo</a>
           </div>
-
-          <ul class="project-list">
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Finance</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Orizon</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Fundo</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Brawlhalla</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
-                </figure>
-
-                <h3 class="project-title">DSM.</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">MetaSpark</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Summary</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Task Manager</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Arrival</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
+          <h3>xAI Credit Risk</h3>
+          <p>Explainable AI exploration for credit risk, connecting predictive modeling with interpretability.</p>
+          <ul class="tags">
+            <li>xAI</li>
+            <li>Risk</li>
+            <li>Notebook</li>
           </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #BLOG
-      -->
-
-      <article class="blog" data-page="blog">
-
-        <header>
-          <h2 class="h2 article-title">Blog</h2>
-        </header>
-
-        <section class="blog-posts">
-
-          <ul class="blog-posts-list">
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
-
-                  <p class="blog-text">
-                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
-
-                  <p class="blog-text">
-                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #80</h3>
-
-                  <p class="blog-text">
-                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">UI interactions of the week</h3>
-
-                  <p class="blog-text">
-                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
-
-                  <p class="blog-text">
-                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #79</h3>
-
-                  <p class="blog-text">
-                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
+        </article>
+
+        <article class="project-card">
+          <div class="project-topline">
+            <span>Jupyter</span>
+            <a href="https://github.com/edward1503/UEH_NLP_EmotionsRecognition" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+          <h3>NLP Emotions Recognition</h3>
+          <p>Semester NLP project at UEH focused on emotion recognition and text classification workflows.</p>
+          <ul class="tags">
+            <li>NLP</li>
+            <li>Classification</li>
+            <li>UEH</li>
           </ul>
+        </article>
 
-        </section>
+        <article class="project-card">
+          <div class="project-topline">
+            <span>Jupyter</span>
+            <a href="https://github.com/edward1503/Cyclistic-Bike-Share-Data-Analysis" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+          <h3>Cyclistic Bike Share Analysis</h3>
+          <p>End-to-end data analysis case study covering cleaning, visualization, and business recommendations.</p>
+          <ul class="tags">
+            <li>Analytics</li>
+            <li>Visualization</li>
+            <li>Insights</li>
+          </ul>
+        </article>
 
-      </article>
+        <article class="project-card">
+          <div class="project-topline">
+            <span>Python</span>
+            <a href="https://github.com/edward1503/Data-Version-Control-Practice---MNIST" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+          <h3>DVC Practice - MNIST</h3>
+          <p>Machine learning workflow practice with data versioning, reproducibility, and experiment discipline.</p>
+          <ul class="tags">
+            <li>DVC</li>
+            <li>MNIST</li>
+            <li>MLOps</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
+    <section class="section split" id="stack" aria-labelledby="stack-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Stack</p>
+        <h2 id="stack-title">A practical AI toolkit.</h2>
+        <p>The portfolio avoids buzzword soup and keeps the focus on tools Edward already presents publicly.</p>
+      </div>
+      <div class="capability-list">
+        <article>
+          <span>01</span>
+          <h3>Modeling</h3>
+          <p>Machine learning and deep learning with Python, Scikit-learn, and PyTorch.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Data products</h3>
+          <p>Analysis, visualization, notebooks, and business-facing recommendations.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Deployment mindset</h3>
+          <p>FastAPI, Docker, Git, DVC, cloud platforms, PySpark, and Databricks.</p>
+        </article>
+      </div>
+    </section>
 
+    <section class="section" id="journey" aria-labelledby="journey-title">
+      <div class="section-heading">
+        <p class="eyebrow">Journey</p>
+        <h2 id="journey-title">From data science foundation to AI engineering practice.</h2>
+      </div>
+      <div class="timeline">
+        <article>
+          <time>2026</time>
+          <div>
+            <h3>Applied AI and engineering labs</h3>
+            <p>Recent GitHub activity shows hands-on work around search, automation, observability, agents, and practical AI labs.</p>
+          </div>
+        </article>
+        <article>
+          <time>2025</time>
+          <div>
+            <h3>University AI and data projects</h3>
+            <p>Built projects across NLP, big data, AI algorithms, business intelligence, and high-performance computing at UEH.</p>
+          </div>
+        </article>
+        <article>
+          <time>2024</time>
+          <div>
+            <h3>Portfolio-scale analytics</h3>
+            <p>Published data analysis and early Python AI projects, including the Cyclistic bike-share case study.</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-
-
-      <!--
-        - #CONTACT
-      -->
-
-      <article class="contact" data-page="contact">
-
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-              width="400" height="300" loading="lazy"></iframe>
-          </figure>
-        </section>
-
-        <section class="contact-form">
-
-          <h3 class="h3 form-title">Contact Form</h3>
-
-          <form action="#" class="form" data-form>
-
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-            </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
-
-          </form>
-
-        </section>
-
-      </article>
-
-    </div>
-
+    <section class="contact section-grid" id="contact" aria-labelledby="contact-title">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Let's build something useful with data.</h2>
+        <p>Best fit: AI engineering, machine learning, data science, and practical product-facing analytics.</p>
+      </div>
+      <div class="contact-links" aria-label="Contact links">
+        <a href="mailto:nguyendonduc1503@gmail.com">nguyendonduc1503@gmail.com</a>
+        <a href="https://linkedin.com/in/edward1503" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/edward1503" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://huggingface.co/edward1503" target="_blank" rel="noreferrer">Hugging Face</a>
+      </div>
+    </section>
   </main>
 
+  <footer class="site-footer">
+    <p>Nguyen Don Duc / Edward</p>
+    <p>Designed and deployed as a static GitHub Pages portfolio.</p>
+  </footer>
 
-
-
-
-
-  <!--
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
-
-  <!--
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+  <script src="assets/js/script.js"></script>
 </body>
-
 </html>
