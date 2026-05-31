@@ -1,149 +1,186 @@
-import { ArrowUpRight, BriefcaseBusiness, Code2, GitBranch, Home as HomeIcon, Mail, UserRound, Wrench } from 'lucide-react';
+import { ArrowUpRight, BrainCircuit, Code2, Database, GraduationCap, Mail, Rocket, Server, Sparkles } from 'lucide-react';
 import { profile, projects, stack } from '@/lib/profile';
 
-const navItems = [
-  { label: 'Home', href: '#top', icon: HomeIcon },
-  { label: 'About', href: '#about', icon: UserRound },
-  { label: 'Work', href: '#work', icon: BriefcaseBusiness },
-  { label: 'Stack', href: '#stack', icon: Wrench },
-  { label: 'Contact', href: '#contact', icon: Mail }
+const nav = [
+  ['About', '#about'],
+  ['Skills', '#skills'],
+  ['Projects', '#projects'],
+  ['Education', '#education']
 ];
 
-const selectedProjects = projects.slice(0, 4);
+const roles = ['AI Engineer', 'Machine Learning Engineer', 'Data Scientist', 'Data Analyst'];
+
+const skillGroups = [
+  {
+    title: 'AI / ML',
+    icon: BrainCircuit,
+    items: ['Python', 'PyTorch', 'Scikit-learn', 'NLP', 'Explainable AI', 'Model Evaluation']
+  },
+  {
+    title: 'Data',
+    icon: Database,
+    items: ['Pandas', 'Visualization', 'Analytics', 'PySpark', 'Databricks', 'Business Insights']
+  },
+  {
+    title: 'Engineering',
+    icon: Server,
+    items: ['FastAPI', 'Docker', 'Git', 'DVC', 'AWS', 'GCP']
+  }
+];
+
+const experience = [
+  {
+    title: 'Applied AI Project Builder',
+    period: '2024 - 2026',
+    body: 'Built public projects around retrieval/search, explainable modeling, NLP classification, analytics case studies, and reproducible ML workflows.'
+  },
+  {
+    title: 'Data Science Graduate',
+    period: 'UEH',
+    body: 'Studied data science foundations and completed university projects in NLP, big data, business intelligence, AI algorithms, and high-performance computing.'
+  }
+];
+
+const selectedProjects = projects.slice(0, 6);
 
 export default function Home() {
   return (
-    <main className="space-site" id="top">
-      <aside className="side-rail" aria-label="Primary navigation">
-        <a className="rail-logo" href="#top" aria-label="Go to top">
-          <span>E</span>
-          <strong>Edward</strong>
-        </a>
-        <nav>
-          {navItems.map(({ label, href, icon: Icon }) => (
-            <a key={label} href={href} aria-label={label}>
-              <Icon size={22} />
-              <span>{label}</span>
-            </a>
-          ))}
+    <main className="portfolio-shell">
+      <header className="site-header">
+        <a className="brand" href="#top">Edward<span>.</span></a>
+        <nav aria-label="Primary navigation">
+          {nav.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
         </nav>
-        <div className="rail-socials">
-          <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><GitBranch size={18} /></a>
-          <a href={`mailto:${profile.email}`} aria-label="Email"><Mail size={18} /></a>
-        </div>
-      </aside>
+        <a className="nav-cta" href={profile.github} target="_blank" rel="noreferrer">GitHub Profile</a>
+      </header>
 
-      <div className="stars" aria-hidden="true" />
-
-      <section className="hero-screen section-screen" aria-labelledby="hero-title">
-        <div className="code-tag top-tag">&lt;body&gt;</div>
-        <div className="code-tag music-tag">&lt;ai/ml&gt;</div>
-
-        <div className="hero-text">
-          <p className="code-tag inline-tag">&lt;h1&gt;</p>
-          <h1 id="hero-title">
-            Hire <span>Edward</span>,<br />Fresher AI Engineer
-          </h1>
-          <p className="code-tag closing-tag">&lt;/h1&gt;</p>
-          <p className="hero-subtitle">Python / Machine Learning / Data Analysis / FastAPI / MLOps basics</p>
-          <a className="neon-button" href="#contact">Interview me</a>
-        </div>
-
-        <div className="hero-mark" aria-hidden="true">
-          <span>E</span>
-          <span>D</span>
-        </div>
-
-        <div className="code-tag bottom-tag">&lt;/body&gt;<br />&lt;/html&gt;</div>
-      </section>
-
-      <section className="about-screen section-screen" id="about" aria-labelledby="about-title">
-        <div className="text-zone">
-          <p className="code-tag">&lt;h2&gt;</p>
-          <h2 id="about-title">About Me</h2>
-          <p className="code-tag close-small">&lt;/h2&gt;</p>
-          <p>
-            I&apos;m {profile.name}, a Data Science graduate looking for Fresher/Junior roles in AI Engineering,
-            Machine Learning, or Data Science. I work best where I can combine Python, data analysis, model experimentation,
-            and clear documentation.
-          </p>
-          <p>
-            For a team, I can help clean datasets, build baseline models, create notebooks that explain decisions,
-            expose prototypes through APIs, and keep experiments reproducible enough for other engineers to review.
-          </p>
-        </div>
-
-        <div className="glass-cube" aria-label="Profile highlights">
-          <div><span>Python</span></div>
-          <div><span>PyTorch</span></div>
-          <div><span>FastAPI</span></div>
-          <div><span>DVC</span></div>
-        </div>
-      </section>
-
-      <section className="work-screen section-screen" id="work" aria-labelledby="work-title">
-        <div className="work-intro">
-          <p className="code-tag">&lt;h2&gt;</p>
-          <h2 id="work-title">Projects</h2>
-          <p className="code-tag close-small">&lt;/h2&gt;</p>
-          <p>
-            Public work selected for hiring signal: search/retrieval, explainable modeling, reproducible ML, and NLP classification.
-          </p>
-          <div className="filter-pills" aria-label="Project focus areas">
-            <span>Applied AI</span>
-            <span>Machine Learning</span>
-            <span>MLOps</span>
-            <span>NLP</span>
+      <section className="hero-section" id="top" aria-labelledby="hero-title">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-copy">
+          <p className="section-chip"><Sparkles size={16} /> Open to Fresher / Junior roles</p>
+          <h1 id="hero-title">Hi, I am <span>{profile.alias}</span></h1>
+          <div className="role-line">I am a <span>{roles.join(' / ')}</span></div>
+          <p className="hero-desc">{profile.summary}</p>
+          <div className="hero-actions">
+            <a className="gradient-button" href={`mailto:${profile.email}`}>Interview Me</a>
+            <a className="ghost-button" href="#projects">View Projects</a>
           </div>
         </div>
 
-        <div className="project-stage">
-          {selectedProjects.map((project) => (
-            <article className="project-panel" key={project.title}>
-              <div className="project-pill-row">
-                <span>{project.language}</span>
-                <span>Public repo</span>
+        <div className="hero-visual" aria-label="Profile image">
+          <div className="profile-ring">
+            <img src={profile.avatar} alt={`${profile.name} profile`} />
+          </div>
+          <div className="floating-card top-card"><Rocket size={18} /> AI prototypes</div>
+          <div className="floating-card bottom-card"><Code2 size={18} /> Python + FastAPI</div>
+        </div>
+      </section>
+
+      <section className="about-section section-block" id="about" aria-labelledby="about-title">
+        <div className="section-heading">
+          <h2 id="about-title">About</h2>
+          <p>What I can bring to a team from day one.</p>
+        </div>
+        <div className="about-grid">
+          <article>
+            <strong>01</strong>
+            <h3>ML foundations</h3>
+            <p>I can prepare data, train baseline models, evaluate results, and explain model behavior in readable notebooks.</p>
+          </article>
+          <article>
+            <strong>02</strong>
+            <h3>AI product mindset</h3>
+            <p>I like building small usable systems: search workflows, API prototypes, analytics automation, and clear demos.</p>
+          </article>
+          <article>
+            <strong>03</strong>
+            <h3>Engineering habits</h3>
+            <p>I use Git, Docker, FastAPI, DVC, and documentation so other people can review and reproduce my work.</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="skills-section section-block" id="skills" aria-labelledby="skills-title">
+        <div className="section-heading centered">
+          <h2 id="skills-title">Skills</h2>
+          <p>Grouped by the jobs I am applying for.</p>
+        </div>
+        <div className="skills-grid">
+          {skillGroups.map(({ title, icon: Icon, items }) => (
+            <article className="skill-card" key={title}>
+              <div className="skill-title"><Icon size={26} /><h3>{title}</h3></div>
+              <div className="skill-tags">
+                {items.map((item) => <span key={item}>{item}</span>)}
               </div>
-              <h3>{project.title}</h3>
-              <p>{project.summary}</p>
-              <ul>
-                {project.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
-              </ul>
-              <a href={project.href} target="_blank" rel="noreferrer">
-                <Code2 size={18} /> Repository <ArrowUpRight size={16} />
-              </a>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="stack-screen section-screen" id="stack" aria-labelledby="stack-title">
-        <div className="text-zone compact">
-          <p className="code-tag">&lt;h2&gt;</p>
-          <h2 id="stack-title">Skills & Tools</h2>
-          <p className="code-tag close-small">&lt;/h2&gt;</p>
-          <p>Tools I can use on day one for data cleaning, ML baselines, API prototypes, experiment tracking, and readable reports.</p>
+      <section className="experience-section section-block" aria-labelledby="experience-title">
+        <div className="section-heading">
+          <h2 id="experience-title">Experience</h2>
+          <p>Project-driven experience, shaped for a first AI/ML role.</p>
         </div>
-        <div className="skill-orbit">
-          {stack.map((item) => <span key={item}>{item}</span>)}
+        <div className="timeline-list">
+          {experience.map((item) => (
+            <article key={item.title}>
+              <span>{item.period}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="contact-screen section-screen" id="contact" aria-labelledby="contact-title">
-        <div className="text-zone contact-zone">
-          <p className="code-tag">&lt;h2&gt;</p>
-          <h2 id="contact-title">Contact Me</h2>
-          <p className="code-tag close-small">&lt;/h2&gt;</p>
-          <p>
-            I&apos;m actively looking for Fresher/Junior AI Engineer, Machine Learning Engineer, Data Scientist,
-            or Data Analyst opportunities. Email me for my CV, interview availability, or project walkthrough.
-          </p>
-          <div className="contact-links">
-            <a href={`mailto:${profile.email}`}><Mail size={18} /> {profile.email}</a>
-            <a href={profile.github} target="_blank" rel="noreferrer"><GitBranch size={18} /> GitHub</a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer"><ArrowUpRight size={18} /> LinkedIn</a>
-            <a href={profile.huggingFace} target="_blank" rel="noreferrer"><ArrowUpRight size={18} /> Hugging Face</a>
+      <section className="projects-section section-block" id="projects" aria-labelledby="projects-title">
+        <div className="section-heading centered">
+          <h2 id="projects-title">Projects</h2>
+          <p>Selected public work that supports AI Engineer / Data Scientist applications.</p>
+        </div>
+        <div className="project-filters" aria-label="Project categories">
+          <span>All</span><span>Applied AI</span><span>Machine Learning</span><span>MLOps</span><span>NLP</span>
+        </div>
+        <div className="projects-grid">
+          {selectedProjects.map((project) => (
+            <article className="project-card" key={project.title}>
+              <div className="project-image" aria-hidden="true">
+                <span>{project.title.slice(0, 2).toUpperCase()}</span>
+              </div>
+              <div className="project-tags">
+                {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
+              </div>
+              <h3>{project.title}</h3>
+              <p>{project.summary}</p>
+              <a href={project.href} target="_blank" rel="noreferrer">Repository <ArrowUpRight size={16} /></a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="education-section section-block" id="education" aria-labelledby="education-title">
+        <div className="section-heading centered">
+          <h2 id="education-title">Education</h2>
+          <p>Academic background supporting the AI/Data direction.</p>
+        </div>
+        <article className="education-card">
+          <GraduationCap size={34} />
+          <div>
+            <h3>Data Science Graduate</h3>
+            <p>University of Economics Ho Chi Minh City</p>
+            <span>Focus: Machine Learning, NLP, Big Data, Business Intelligence, AI Algorithms</span>
           </div>
+        </article>
+      </section>
+
+      <section className="contact-section" id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Ready to discuss a Fresher AI/ML role?</h2>
+        <p>Email me for my CV, interview availability, or a walkthrough of the projects above.</p>
+        <div>
+          <a className="gradient-button" href={`mailto:${profile.email}`}><Mail size={18} /> Contact Edward</a>
+          <a className="ghost-button" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </section>
     </main>
