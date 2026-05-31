@@ -1,107 +1,144 @@
-import { ArrowUpRight, GitBranch, Mail, MapPin } from 'lucide-react';
+import { ArrowUpRight, BriefcaseBusiness, Code2, GitBranch, Home as HomeIcon, Mail, UserRound, Wrench } from 'lucide-react';
 import { profile, projects, stack } from '@/lib/profile';
 
-const proof = [
-  ['78+', 'public repos across AI, data, and engineering labs'],
-  ['2026', 'recent work in applied search, agents, automation, and observability'],
-  ['UEH', 'data science foundation with NLP, BI, big data, and AI projects']
+const navItems = [
+  { label: 'Home', href: '#top', icon: HomeIcon },
+  { label: 'About', href: '#about', icon: UserRound },
+  { label: 'Work', href: '#work', icon: BriefcaseBusiness },
+  { label: 'Stack', href: '#stack', icon: Wrench },
+  { label: 'Contact', href: '#contact', icon: Mail }
 ];
 
 const selectedProjects = projects.slice(0, 4);
 
 export default function Home() {
   return (
-    <main className="site-shell" id="top">
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="Go to top">
-          <span>ED</span>
-          <strong>{profile.alias}</strong>
+    <main className="space-site" id="top">
+      <aside className="side-rail" aria-label="Primary navigation">
+        <a className="rail-logo" href="#top" aria-label="Go to top">
+          <span>E</span>
+          <strong>Edward</strong>
         </a>
-        <nav className="nav" aria-label="Primary navigation">
-          <a href="#work">Work</a>
-          <a href="#stack">Stack</a>
-          <a href="#contact">Contact</a>
+        <nav>
+          {navItems.map(({ label, href, icon: Icon }) => (
+            <a key={label} href={href} aria-label={label}>
+              <Icon size={22} />
+              <span>{label}</span>
+            </a>
+          ))}
         </nav>
-        <a className="header-link" href={profile.github} target="_blank" rel="noreferrer">
-          <GitBranch size={17} />
-          GitHub
-        </a>
-      </header>
+        <div className="rail-socials">
+          <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><GitBranch size={18} /></a>
+          <a href={`mailto:${profile.email}`} aria-label="Email"><Mail size={18} /></a>
+        </div>
+      </aside>
 
-      <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-main">
-          <p className="eyebrow">{profile.role}</p>
-          <h1 id="hero-title">AI engineer who turns data work into usable systems.</h1>
-          <p className="hero-copy">
-            I&apos;m {profile.name}, also known as {profile.alias}. I build with Python, machine learning, retrieval/search,
-            and MLOps habits so models do not stay trapped in notebooks.
+      <div className="stars" aria-hidden="true" />
+
+      <section className="hero-screen section-screen" aria-labelledby="hero-title">
+        <div className="code-tag top-tag">&lt;body&gt;</div>
+        <div className="code-tag music-tag">&lt;ai/ml&gt;</div>
+
+        <div className="hero-text">
+          <p className="code-tag inline-tag">&lt;h1&gt;</p>
+          <h1 id="hero-title">
+            Hi,<br />I&apos;m <span>Edward</span>,<br />AI Engineer
+          </h1>
+          <p className="code-tag closing-tag">&lt;/h1&gt;</p>
+          <p className="hero-subtitle">Machine Learning / Data Science / Applied AI Search / MLOps</p>
+          <a className="neon-button" href="#contact">Contact me</a>
+        </div>
+
+        <div className="hero-mark" aria-hidden="true">
+          <span>E</span>
+          <span>D</span>
+        </div>
+
+        <div className="code-tag bottom-tag">&lt;/body&gt;<br />&lt;/html&gt;</div>
+      </section>
+
+      <section className="about-screen section-screen" id="about" aria-labelledby="about-title">
+        <div className="text-zone">
+          <p className="code-tag">&lt;h2&gt;</p>
+          <h2 id="about-title">About Me</h2>
+          <p className="code-tag close-small">&lt;/h2&gt;</p>
+          <p>
+            I&apos;m {profile.name}, a Data Science graduate building toward machine learning engineering and practical AI systems.
+            My work sits around Python, search/retrieval, explainable modeling, analytics, and deployment habits that make models useful.
           </p>
-          <div className="hero-actions">
-            <a className="button primary" href="#work">See selected work</a>
-            <a className="button secondary" href={`mailto:${profile.email}`}>Start a conversation</a>
+          <p>
+            I care about clean experiments, readable project stories, and turning raw data into products that a team can evaluate,
+            ship, and improve.
+          </p>
+        </div>
+
+        <div className="glass-cube" aria-label="Profile highlights">
+          <div><span>Python</span></div>
+          <div><span>PyTorch</span></div>
+          <div><span>FastAPI</span></div>
+          <div><span>DVC</span></div>
+        </div>
+      </section>
+
+      <section className="work-screen section-screen" id="work" aria-labelledby="work-title">
+        <div className="work-intro">
+          <p className="code-tag">&lt;h2&gt;</p>
+          <h2 id="work-title">Projects</h2>
+          <p className="code-tag close-small">&lt;/h2&gt;</p>
+          <p>
+            A focused set of public projects showing applied AI, explainability, workflow discipline, and NLP practice.
+          </p>
+          <div className="filter-pills" aria-label="Project focus areas">
+            <span>Applied AI</span>
+            <span>Machine Learning</span>
+            <span>MLOps</span>
+            <span>NLP</span>
           </div>
         </div>
 
-        <aside className="portrait-card" aria-label="Profile summary">
-          <img src={profile.avatar} alt={`${profile.name} profile`} />
-          <div className="portrait-copy">
-            <span>Available for AI / ML roles</span>
-            <h2>{profile.name}</h2>
-            <p><MapPin size={15} /> {profile.location}</p>
-          </div>
-        </aside>
-      </section>
-
-      <section className="proof-grid" aria-label="Profile highlights">
-        {proof.map(([value, label]) => (
-          <article key={value}>
-            <strong>{value}</strong>
-            <span>{label}</span>
-          </article>
-        ))}
-      </section>
-
-      <section className="work-section" id="work" aria-labelledby="work-title">
-        <div className="section-kicker">
-          <p className="eyebrow">Selected work</p>
-          <h2 id="work-title">Not everything. Just the projects that explain the direction.</h2>
-        </div>
-        <div className="case-list">
-          {selectedProjects.map((project, index) => (
-            <article className="case-card" key={project.title}>
-              <div className="case-index">0{index + 1}</div>
-              <div className="case-body">
-                <div className="case-meta">
-                  <span>{project.language}</span>
-                  <span>{project.tags.slice(0, 2).join(' / ')}</span>
-                </div>
-                <h3>{project.title}</h3>
-                <p>{project.summary}</p>
+        <div className="project-stage">
+          {selectedProjects.map((project) => (
+            <article className="project-panel" key={project.title}>
+              <div className="project-pill-row">
+                <span>{project.language}</span>
+                <span>Public repo</span>
               </div>
-              <a className="case-link" href={project.href} target="_blank" rel="noreferrer" aria-label={`Open ${project.title} repository`}>
-                <ArrowUpRight size={19} />
+              <h3>{project.title}</h3>
+              <p>{project.summary}</p>
+              <ul>
+                {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
+              </ul>
+              <a href={project.href} target="_blank" rel="noreferrer">
+                <Code2 size={18} /> Repository <ArrowUpRight size={16} />
               </a>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="stack-contact" id="stack" aria-labelledby="stack-title">
-        <div className="stack-panel">
-          <p className="eyebrow">Stack</p>
-          <h2 id="stack-title">Built around practical AI delivery.</h2>
-          <div className="stack-tags" aria-label="Technology stack">
-            {stack.map((item) => <span key={item}>{item}</span>)}
-          </div>
+      <section className="stack-screen section-screen" id="stack" aria-labelledby="stack-title">
+        <div className="text-zone compact">
+          <p className="code-tag">&lt;h2&gt;</p>
+          <h2 id="stack-title">Skills & Tools</h2>
+          <p className="code-tag close-small">&lt;/h2&gt;</p>
+          <p>Tools I use to move from notebooks to services, experiments, and explainable outputs.</p>
         </div>
-        <div className="contact-panel" id="contact">
-          <p className="eyebrow">Contact</p>
-          <h2>Let&apos;s build useful AI.</h2>
-          <p>Best fit: ML engineering, applied search, data products, analytics automation, and MLOps-flavored work.</p>
+        <div className="skill-orbit">
+          {stack.map((item) => <span key={item}>{item}</span>)}
+        </div>
+      </section>
+
+      <section className="contact-screen section-screen" id="contact" aria-labelledby="contact-title">
+        <div className="text-zone contact-zone">
+          <p className="code-tag">&lt;h2&gt;</p>
+          <h2 id="contact-title">Contact Me</h2>
+          <p className="code-tag close-small">&lt;/h2&gt;</p>
+          <p>Open to AI engineering, ML, data science, analytics automation, and internship/fresher roles.</p>
           <div className="contact-links">
-            <a href={`mailto:${profile.email}`}><Mail size={17} /> {profile.email}</a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer"><ArrowUpRight size={17} /> LinkedIn</a>
-            <a href={profile.huggingFace} target="_blank" rel="noreferrer"><ArrowUpRight size={17} /> Hugging Face</a>
+            <a href={`mailto:${profile.email}`}><Mail size={18} /> {profile.email}</a>
+            <a href={profile.github} target="_blank" rel="noreferrer"><GitBranch size={18} /> GitHub</a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer"><ArrowUpRight size={18} /> LinkedIn</a>
+            <a href={profile.huggingFace} target="_blank" rel="noreferrer"><ArrowUpRight size={18} /> Hugging Face</a>
           </div>
         </div>
       </section>
