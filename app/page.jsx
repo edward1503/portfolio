@@ -42,11 +42,11 @@ export default function Home() {
         <div className="hero-text">
           <p className="code-tag inline-tag">&lt;h1&gt;</p>
           <h1 id="hero-title">
-            Hi,<br />I&apos;m <span>Edward</span>,<br />AI Engineer
+            Hire <span>Edward</span>,<br />Fresher AI Engineer
           </h1>
           <p className="code-tag closing-tag">&lt;/h1&gt;</p>
-          <p className="hero-subtitle">Machine Learning / Data Science / Applied AI Search / MLOps</p>
-          <a className="neon-button" href="#contact">Contact me</a>
+          <p className="hero-subtitle">Python / Machine Learning / Data Analysis / FastAPI / MLOps basics</p>
+          <a className="neon-button" href="#contact">Interview me</a>
         </div>
 
         <div className="hero-mark" aria-hidden="true">
@@ -63,12 +63,13 @@ export default function Home() {
           <h2 id="about-title">About Me</h2>
           <p className="code-tag close-small">&lt;/h2&gt;</p>
           <p>
-            I&apos;m {profile.name}, a Data Science graduate building toward machine learning engineering and practical AI systems.
-            My work sits around Python, search/retrieval, explainable modeling, analytics, and deployment habits that make models useful.
+            I&apos;m {profile.name}, a Data Science graduate looking for Fresher/Junior roles in AI Engineering,
+            Machine Learning, or Data Science. I work best where I can combine Python, data analysis, model experimentation,
+            and clear documentation.
           </p>
           <p>
-            I care about clean experiments, readable project stories, and turning raw data into products that a team can evaluate,
-            ship, and improve.
+            For a team, I can help clean datasets, build baseline models, create notebooks that explain decisions,
+            expose prototypes through APIs, and keep experiments reproducible enough for other engineers to review.
           </p>
         </div>
 
@@ -86,7 +87,7 @@ export default function Home() {
           <h2 id="work-title">Projects</h2>
           <p className="code-tag close-small">&lt;/h2&gt;</p>
           <p>
-            A focused set of public projects showing applied AI, explainability, workflow discipline, and NLP practice.
+            Public work selected for hiring signal: search/retrieval, explainable modeling, reproducible ML, and NLP classification.
           </p>
           <div className="filter-pills" aria-label="Project focus areas">
             <span>Applied AI</span>
@@ -106,7 +107,7 @@ export default function Home() {
               <h3>{project.title}</h3>
               <p>{project.summary}</p>
               <ul>
-                {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
+                {project.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
               </ul>
               <a href={project.href} target="_blank" rel="noreferrer">
                 <Code2 size={18} /> Repository <ArrowUpRight size={16} />
@@ -121,7 +122,7 @@ export default function Home() {
           <p className="code-tag">&lt;h2&gt;</p>
           <h2 id="stack-title">Skills & Tools</h2>
           <p className="code-tag close-small">&lt;/h2&gt;</p>
-          <p>Tools I use to move from notebooks to services, experiments, and explainable outputs.</p>
+          <p>Tools I can use on day one for data cleaning, ML baselines, API prototypes, experiment tracking, and readable reports.</p>
         </div>
         <div className="skill-orbit">
           {stack.map((item) => <span key={item}>{item}</span>)}
@@ -133,7 +134,10 @@ export default function Home() {
           <p className="code-tag">&lt;h2&gt;</p>
           <h2 id="contact-title">Contact Me</h2>
           <p className="code-tag close-small">&lt;/h2&gt;</p>
-          <p>Open to AI engineering, ML, data science, analytics automation, and internship/fresher roles.</p>
+          <p>
+            I&apos;m actively looking for Fresher/Junior AI Engineer, Machine Learning Engineer, Data Scientist,
+            or Data Analyst opportunities. Email me for my CV, interview availability, or project walkthrough.
+          </p>
           <div className="contact-links">
             <a href={`mailto:${profile.email}`}><Mail size={18} /> {profile.email}</a>
             <a href={profile.github} target="_blank" rel="noreferrer"><GitBranch size={18} /> GitHub</a>
