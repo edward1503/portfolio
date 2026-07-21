@@ -1,5 +1,6 @@
 import { ExternalLink, GraduationCap, Mail, MapPin } from 'lucide-react';
 import { profile, projects, stack } from '@/lib/profile';
+import ScrollEffects from '@/components/ScrollEffects';
 
 const nav = [
   ['About', '#about'],
@@ -29,7 +30,7 @@ export default function Home() {
         </div>
 
         <nav className="sidebar-nav" aria-label="Primary navigation">
-          {nav.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
+          {nav.map(([label, href], index) => <a key={label} href={href} data-nav-target={href.slice(1)} className={index === 0 ? 'active' : ''}>{label}</a>)}
         </nav>
 
         <div className="social-links" aria-label="Profile links">
@@ -41,12 +42,13 @@ export default function Home() {
       </aside>
 
       <div className="content-column" id="top">
+        <ScrollEffects />
         <header className="mobile-header">
           <a href="#top">{profile.alias}</a>
           <a href={`mailto:${profile.email}`}>Contact</a>
         </header>
 
-        <section id="about" aria-labelledby="about-heading">
+        <section id="about" className="reveal is-visible" aria-labelledby="about-heading">
           <p className="eyebrow">About me</p>
           <h2 id="about-heading">Hello, I&apos;m {profile.alias}.</h2>
           <p className="lead">{profile.headline}</p>
@@ -61,14 +63,14 @@ export default function Home() {
           </dl>
         </section>
 
-        <section className="news-section" aria-labelledby="news-heading">
+        <section className="news-section reveal" aria-labelledby="news-heading">
           <h2 id="news-heading">Latest updates</h2>
           <ul className="news-list">
             {updates.map(([date, text]) => <li key={date}><time>{date}</time><span>{text}</span></li>)}
           </ul>
         </section>
 
-        <section id="projects" aria-labelledby="projects-heading">
+        <section id="projects" className="reveal" aria-labelledby="projects-heading">
           <h2 id="projects-heading">Selected projects</h2>
           <p className="section-intro">A selection of public work. More is available on my <a href={profile.github} target="_blank" rel="noreferrer">GitHub profile</a>.</p>
           <ol className="project-list">
@@ -87,7 +89,7 @@ export default function Home() {
           </ol>
         </section>
 
-        <section id="skills" aria-labelledby="skills-heading">
+        <section id="skills" className="reveal" aria-labelledby="skills-heading">
           <h2 id="skills-heading">Technical skills</h2>
           <div className="skill-columns">
             <div><h3>Machine learning & AI</h3><p>Python, PyTorch, Scikit-learn, NLP, Explainable AI, model evaluation</p></div>
@@ -97,7 +99,7 @@ export default function Home() {
           <p className="stack-line">{stack.join(' · ')}</p>
         </section>
 
-        <section id="education" aria-labelledby="education-heading">
+        <section id="education" className="reveal" aria-labelledby="education-heading">
           <h2 id="education-heading">Education</h2>
           <div className="education-entry">
             <GraduationCap size={25} aria-hidden="true" />
@@ -105,7 +107,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="contact-section" aria-labelledby="contact-heading">
+        <section id="contact" className="contact-section reveal" aria-labelledby="contact-heading">
           <h2 id="contact-heading">Let&apos;s connect</h2>
           <p>I&apos;m available for Fresher / Junior AI, Machine Learning, and Data Science opportunities.</p>
           <a className="contact-link" href={`mailto:${profile.email}`}>Email me <Mail size={17} /></a>
