@@ -1,116 +1,64 @@
-import { ExternalLink, GraduationCap, Mail, MapPin } from 'lucide-react';
-import { profile, projects, stack } from '@/lib/profile';
+import { ArrowDownRight, ArrowUpRight, BookOpen, ExternalLink, Mail, MapPin } from 'lucide-react';
+import { experience, impact, profile, projects } from '@/lib/profile';
 import ScrollEffects from '@/components/ScrollEffects';
 
-const nav = [
-  ['About', '#about'],
-  ['Projects', '#projects'],
-  ['Skills', '#skills'],
-  ['Education', '#education'],
-  ['Contact', '#contact']
-];
-
-const updates = [
-  ['2026', 'Open to Fresher / Junior opportunities in AI Engineering, Machine Learning, and Data Science.'],
-  ['2025', 'Completed Data Science studies at the University of Economics Ho Chi Minh City (UEH).'],
-  ['2024–26', 'Built public, project-driven work in retrieval, NLP, explainable AI, analytics, and reproducible ML.']
-];
+const nav = [['Work', '#work'], ['Experience', '#experience'], ['Research', '#research'], ['Contact', '#contact']];
 
 export default function Home() {
   return (
-    <main className="academic-page">
-      <aside className="profile-sidebar">
-        <a href="#top" className="profile-photo">
-          <img src={profile.avatar} alt={`Portrait of ${profile.name}`} />
-        </a>
-        <div className="identity">
-          <h1>{profile.name}</h1>
-          <p className="role">{profile.role}</p>
-          <p className="location"><MapPin size={15} /> {profile.location}, Vietnam</p>
-        </div>
-
-        <nav className="sidebar-nav" aria-label="Primary navigation">
-          {nav.map(([label, href], index) => <a key={label} href={href} data-nav-target={href.slice(1)} className={index === 0 ? 'active' : ''}>{label}</a>)}
-        </nav>
-
-        <div className="social-links" aria-label="Profile links">
-          <a href={`mailto:${profile.email}`} aria-label="Email"><Mail size={19} /></a>
-          <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
-          <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
-        </div>
-        <p className="sidebar-note">© {new Date().getFullYear()} {profile.name}</p>
+    <main>
+      <ScrollEffects />
+      <aside className="side-rail">
+        <a href="#top" className="monogram" aria-label="Back to top">ĐĐ</a>
+        <div className="rail-middle"><span>AI / RESEARCH</span><span>2026</span></div>
+        <div className="rail-line" />
       </aside>
-
-      <div className="content-column" id="top">
-        <ScrollEffects />
-        <header className="mobile-header">
-          <a href="#top">{profile.alias}</a>
-          <a href={`mailto:${profile.email}`}>Contact</a>
+      <div className="site-shell" id="top">
+        <header className="topbar">
+          <a className="wordmark" href="#top">NGUYỄN ĐÔN ĐỨC <span>/ EDWARD</span></a>
+          <nav aria-label="Primary navigation">{nav.map(([label, href]) => <a key={label} href={href} data-nav-target={href.slice(1)}>{label}</a>)}</nav>
+          <a className="availability" href={`mailto:${profile.email}`}><i /> Available for collaboration</a>
         </header>
 
-        <section id="about" className="reveal is-visible" aria-labelledby="about-heading">
-          <p className="eyebrow">About me</p>
-          <h2 id="about-heading">Hello, I&apos;m {profile.alias}.</h2>
-          <p className="lead">{profile.headline}</p>
-          <p>{profile.summary}</p>
-          <p>
-            I enjoy turning messy data and research ideas into useful, understandable software—from model experiments and data analysis to small APIs and search workflows. I care about clear documentation, reproducible results, and building things people can actually use.
-          </p>
-          <dl className="details-list">
-            <div><dt>Email</dt><dd><a href={`mailto:${profile.email}`}>{profile.email}</a></dd></div>
-            <div><dt>Location</dt><dd>{profile.location}, Vietnam</dd></div>
-            <div><dt>Profiles</dt><dd><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a> · <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a> · <a href={profile.huggingFace} target="_blank" rel="noreferrer">Hugging Face</a></dd></div>
-          </dl>
-        </section>
-
-        <section className="news-section reveal" aria-labelledby="news-heading">
-          <h2 id="news-heading">Latest updates</h2>
-          <ul className="news-list">
-            {updates.map(([date, text]) => <li key={date}><time>{date}</time><span>{text}</span></li>)}
-          </ul>
-        </section>
-
-        <section id="projects" className="reveal" aria-labelledby="projects-heading">
-          <h2 id="projects-heading">Selected projects</h2>
-          <p className="section-intro">A selection of public work. More is available on my <a href={profile.github} target="_blank" rel="noreferrer">GitHub profile</a>.</p>
-          <ol className="project-list">
-            {projects.map((project, index) => (
-              <li key={project.title}>
-                <article>
-                  <div className="project-title-row">
-                    <h3>{project.title}</h3>
-                    <a href={project.href} target="_blank" rel="noreferrer" aria-label={`Open ${project.title} repository`}><ExternalLink size={17} /></a>
-                  </div>
-                  <p>{project.summary}</p>
-                  <div className="tag-list">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
-                </article>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section id="skills" className="reveal" aria-labelledby="skills-heading">
-          <h2 id="skills-heading">Technical skills</h2>
-          <div className="skill-columns">
-            <div><h3>Machine learning & AI</h3><p>Python, PyTorch, Scikit-learn, NLP, Explainable AI, model evaluation</p></div>
-            <div><h3>Data & analytics</h3><p>Pandas, data visualization, PySpark, Databricks, business insights</p></div>
-            <div><h3>Engineering</h3><p>FastAPI, Docker, Git, DVC, AWS, GCP</p></div>
-          </div>
-          <p className="stack-line">{stack.join(' · ')}</p>
-        </section>
-
-        <section id="education" className="reveal" aria-labelledby="education-heading">
-          <h2 id="education-heading">Education</h2>
-          <div className="education-entry">
-            <GraduationCap size={25} aria-hidden="true" />
-            <div><h3>Data Science Graduate</h3><p>University of Economics Ho Chi Minh City (UEH)</p><span>Focus: Machine Learning, NLP, Big Data, Business Intelligence, AI Algorithms</span></div>
+        <section className="hero reveal is-visible" aria-labelledby="hero-title">
+          <p className="kicker">Ho Chi Minh City · Vietnam <span>✦</span> {profile.role}</p>
+          <h1 id="hero-title">{profile.headline}</h1>
+          <div className="hero-bottom">
+            <p>{profile.summary}</p>
+            <a href="#work" className="circle-link" aria-label="See selected work"><ArrowDownRight size={26} /></a>
           </div>
         </section>
 
-        <section id="contact" className="contact-section reveal" aria-labelledby="contact-heading">
-          <h2 id="contact-heading">Let&apos;s connect</h2>
-          <p>I&apos;m available for Fresher / Junior AI, Machine Learning, and Data Science opportunities.</p>
-          <a className="contact-link" href={`mailto:${profile.email}`}>Email me <Mail size={17} /></a>
+        <section className="impact-grid reveal" aria-label="Key numbers">
+          {impact.map(([number, label]) => <div key={number}><strong>{number}</strong><span>{label}</span></div>)}
+        </section>
+
+        <section id="work" className="section reveal" aria-labelledby="work-title">
+          <div className="section-heading"><p className="section-number">01 / SELECTED WORK</p><h2 id="work-title">Systems with<br /><em>real stakes.</em></h2></div>
+          <div className="work-list">{projects.map(project => <article className="project-card" key={project.title}>
+            <div className="project-meta"><span>{project.index}</span><span>{project.eyebrow}</span></div>
+            <div className="project-content"><h3>{project.title}</h3><p>{project.summary}</p><p className="project-detail">{project.details}</p><div className="tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div></div>
+            <a href={project.href} target="_blank" rel="noreferrer" className="project-link" aria-label={`Open ${project.title}`}><ArrowUpRight size={22} /></a>
+          </article>)}</div>
+        </section>
+
+        <section id="experience" className="section experience-section reveal" aria-labelledby="experience-title">
+          <div className="section-heading"><p className="section-number">02 / EXPERIENCE</p><h2 id="experience-title">Research meets<br /><em>shipping.</em></h2></div>
+          <div className="timeline">{experience.map(item => <article key={item.company}><p className="period">{item.period}</p><div><h3>{item.role}</h3><p className="company">{item.company}</p><p>{item.copy}</p></div></article>)}</div>
+        </section>
+
+        <section id="research" className="research-band reveal" aria-labelledby="research-title">
+          <div><p className="section-number">03 / RESEARCH</p><h2 id="research-title">Published research,<br />grounded practice.</h2></div>
+          <div className="research-list">
+            <a href="https://doi.org/10.1007/978-3-032-03751-0_8" target="_blank" rel="noreferrer"><BookOpen size={20} /><span><b>ICDAM 2025 · Springer</b>Comparative Analysis of LSTM, Transformer-Based LSTM and Transformer-Based GRU for Stock Price Prediction.</span><ExternalLink size={17} /></a>
+            <div><BookOpen size={20} /><span><b>Graduation thesis · 2025</b>Hybrid-Log Loss for deep-learning regression, with a 5–10% overall performance improvement across practical datasets.</span></div>
+          </div>
+        </section>
+
+        <section id="contact" className="contact reveal" aria-labelledby="contact-title">
+          <p className="section-number">04 / CONTACT</p><h2 id="contact-title">Have a meaningful<br /><em>problem to solve?</em></h2>
+          <a className="email-link" href={`mailto:${profile.email}`}>{profile.email} <ArrowUpRight size={26} /></a>
+          <div className="contact-meta"><span><MapPin size={15} /> {profile.location}</span><span><Mail size={15} /> {profile.phone}</span><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a href={profile.github} target="_blank" rel="noreferrer">GitHub ↗</a></div>
         </section>
       </div>
     </main>

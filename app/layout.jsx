@@ -6,14 +6,12 @@ const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', 
 
 export const metadata = {
   metadataBase: new URL('https://edward1503.github.io/portfolio/'),
-  title: 'Nguyen Don Duc | Fresher AI Engineer',
+  title: 'Nguyễn Đôn Đức | AI Researcher & Engineer',
   description:
-    'Hiring-focused portfolio of Nguyen Don Duc, also known as Edward, a Fresher AI Engineer focused on Python, machine learning, data science, FastAPI, and MLOps basics.',
+    'Portfolio of Nguyễn Đôn Đức (Edward), an AI researcher and engineer working in retrieval, LLM applications, adaptive learning, and quantitative research.',
   openGraph: {
-    title: 'Nguyen Don Duc | Fresher AI Engineer',
-    description: 'Python, machine learning, data analysis, applied AI, and MLOps project portfolio by Edward.',
-    type: 'website',
-    images: ['https://avatars.githubusercontent.com/u/142201083?v=4']
+    title: 'Nguyễn Đôn Đức | AI Researcher & Engineer',
+    description: 'Retrieval, LLM applications, adaptive learning, and quantitative research.'
   }
 };
 
