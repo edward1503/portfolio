@@ -1,4 +1,4 @@
-import { Award, ExternalLink, GraduationCap, Mail, MapPin, Sparkles, BookOpen, Briefcase, Code } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Award, ExternalLink, GraduationCap, Mail, MapPin, Sparkles, BookOpen, Briefcase, Code } from 'lucide-react';
 import { experience, highlights, honors, profile, projects, stack } from '@/lib/profile';
 import ScrollEffects from '@/components/ScrollEffects';
 
@@ -78,14 +78,39 @@ export default function Home() {
         <ScrollEffects />
 
         {/* About Section */}
-        <section id="about" className="reveal is-visible">
-          <p className="eyebrow">
-            <Sparkles size={14} style={{ display: 'inline', marginRight: '6px', verticalAlign: '-2px' }} />
-            About me
-          </p>
-          <h2>Hello, I&apos;m {profile.alias}.</h2>
-          <p className="lead">{profile.headline}</p>
-          <p>{profile.summary}</p>
+        <section id="about" className="hero reveal is-visible">
+          <div className="hero-topline">
+            <p className="eyebrow">
+              <Sparkles size={14} />
+              AI researcher · engineer
+            </p>
+            <span>Portfolio / 2026</span>
+          </div>
+
+          <div className="hero-heading">
+            <h2>
+              I turn research
+              <span>into systems that work.</span>
+            </h2>
+            <div className="hero-orbit" aria-hidden="true">
+              <span>AI</span>
+            </div>
+          </div>
+
+          <div className="hero-grid">
+            <p className="lead">{profile.headline}</p>
+            <div className="hero-copy">
+              <p>{profile.summary}</p>
+              <div className="hero-actions">
+                <a className="primary-action" href="#projects">
+                  View selected work <ArrowDownRight size={16} />
+                </a>
+                <a className="text-action" href={`mailto:${profile.email}`}>
+                  Start a conversation <ArrowUpRight size={15} />
+                </a>
+              </div>
+            </div>
+          </div>
           
           <dl className="details-list">
             <div>
@@ -121,7 +146,10 @@ export default function Home() {
 
         {/* Latest Updates Section */}
         <section className="news-section reveal">
-          <h2>Latest updates</h2>
+          <div className="section-heading">
+            <span>01 / Now</span>
+            <h2>Latest updates</h2>
+          </div>
           <ul className="news-list">
             {updates.map(([date, text]) => (
               <li key={text} className="timeline-item">
@@ -136,10 +164,10 @@ export default function Home() {
 
         {/* Experience Section */}
         <section id="experience" className="reveal">
-          <h2>
-            <Briefcase size={22} style={{ display: 'inline', marginRight: '8px', verticalAlign: '-3px' }} />
-            Experience
-          </h2>
+          <div className="section-heading">
+            <span>02 / Career</span>
+            <h2><Briefcase size={22} /> Experience</h2>
+          </div>
           <div className="experience-list">
             {experience.map((item) => (
               <article key={item.organization} className="timeline-item">
@@ -156,17 +184,18 @@ export default function Home() {
 
         {/* Projects Section */}
         <section id="projects" className="reveal">
-          <h2>
-            <Code size={22} style={{ display: 'inline', marginRight: '8px', verticalAlign: '-3px' }} />
-            Selected Projects
-          </h2>
+          <div className="section-heading">
+            <span>03 / Selected work</span>
+            <h2><Code size={22} /> Projects</h2>
+          </div>
           <p className="section-intro">
             Selected systems from my current CV. Each project bridges theoretical research questions with practical, high-throughput production products.
           </p>
           <ul className="project-list">
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <li key={project.title}>
                 <article className="project-card">
+                  <span className="project-index">0{index + 1}</span>
                   <div className="project-title-row">
                     <h3>{project.title}</h3>
                     <a
@@ -199,10 +228,10 @@ export default function Home() {
 
         {/* Research Section */}
         <section id="research" className="reveal">
-          <h2>
-            <BookOpen size={22} style={{ display: 'inline', marginRight: '8px', verticalAlign: '-3px' }} />
-            Research & Publications
-          </h2>
+          <div className="section-heading">
+            <span>04 / Publications</span>
+            <h2><BookOpen size={22} /> Research</h2>
+          </div>
           <div className="research-entry">
             <span className="citation-badge">Conference Paper · ICDAM 2025 · Springer</span>
             <h3>
@@ -226,7 +255,10 @@ export default function Home() {
 
         {/* Technical Skills Section */}
         <section id="skills" className="reveal">
-          <h2>Technical Skills</h2>
+          <div className="section-heading">
+            <span>05 / Toolkit</span>
+            <h2>Technical Skills</h2>
+          </div>
           <div className="skill-columns">
             <div className="skill-card">
               <h3>AI & Research</h3>
@@ -242,7 +274,10 @@ export default function Home() {
 
         {/* Education & Honors Section */}
         <section id="education" className="reveal">
-          <h2>Education & Recognition</h2>
+          <div className="section-heading">
+            <span>06 / Foundation</span>
+            <h2>Education & Recognition</h2>
+          </div>
           <div className="education-entry">
             <GraduationCap size={28} />
             <div>
@@ -279,4 +314,3 @@ export default function Home() {
     </main>
   );
 }
-
