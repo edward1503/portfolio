@@ -34,6 +34,10 @@ GitHub project descriptions were reviewed against repository documentation and i
 
 All content is visible by default. The mobile menu, preview switch, and native dialogs support keyboard interaction. The site includes visible focus, a skip link, labeled sections, responsive layouts, and reduced-motion support. Canonical, Open Graph, Twitter, and Person metadata are included. Case studies have their own titles, canonical URLs, and preview images.
 
+### Motion
+
+Headlines and content reveal once as they enter the viewport, using Intersection Observer and the Web Animations API. Desktop adds browser-native scroll timelines for the hero, magnetic controls, and a restrained preview tilt. Pointer updates are scheduled only during hover; there is no JavaScript scroll listener or idle animation loop. Mobile uses shorter 14px reveals, skips magnetic/tilt/parallax, and removes backdrop blur. Reduced-motion preferences disable these effects, including when changed at runtime. Content remains readable without JavaScript; focus cancels an entering animation, and route changes clean up observers, animations, and pointer listeners.
+
 ## Local development
 
 Use Node.js 22 to match GitHub Actions.

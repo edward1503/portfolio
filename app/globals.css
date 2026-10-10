@@ -34,6 +34,9 @@ h1, h2, h3, h4 { font-family: var(--font-display), Arial, sans-serif; font-weigh
 .hero-greeting { color: #d0d1d6; font-size: 17px; margin-bottom: 19px; }
 .hero h1 { font-size: clamp(60px, 6.6vw, 96px); font-weight: 500; line-height: .99; letter-spacing: -.07em; }
 .hero h1 span { color: #a9bdff; }
+.hero h1 .heading-line { display: block; overflow: clip; color: inherit; padding-bottom: .12em; margin-bottom: -.12em; }
+.hero h1 .heading-line > span { display: block; color: inherit; }
+.hero h1 em { font-style: normal; color: #a9bdff; }
 .hero-description { font-size: 17px; line-height: 1.65; max-width: 440px; margin: 26px 0 28px; color: #c5c6cd; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 20px; border-radius: 50px; padding: 15px 23px; font-size: 14px; font-weight: 500; transition: background .25s, transform .25s; }
 .button:hover { transform: translateY(-3px); }
@@ -48,7 +51,8 @@ h1, h2, h3, h4 { font-family: var(--font-display), Arial, sans-serif; font-weigh
 .portrait-caption { padding: 40px 0 0 25px; display: flex; align-items: flex-start; gap: 22px; font-size: 11px; color: #bfc1c9; line-height: 1.7; }
 .portrait-caption strong { font-size: 12px; color: #eff0f6; font-weight: 400; }
 .hero-signature { font-family: var(--font-display), sans-serif; font-size: clamp(90px, 19.2vw, 270px); letter-spacing: -.085em; line-height: .82; font-weight: 500; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #52545c; padding: 0 0 36px; }
-.hero-signature span { font-size: .59em; font-weight: 400; margin-right: 14px; color: #a9bdff; }
+.hero-signature .signature-arrow { font-size: .59em; font-weight: 400; margin-right: 14px; color: #a9bdff; }
+.hero-signature-word { display: block; }
 .hero-bottom { padding-block: 24px 30px; font-size: 12px; }
 .hero-bottom a { font-size: 10px; letter-spacing: .08em; display: flex; align-items: center; gap: 18px; }
 .work-section { background: var(--paper); padding: 112px 0 100px; border-radius: 24px 24px 0 0; }
@@ -294,7 +298,7 @@ a.research-item:hover h3 { color: var(--cobalt); }
   .portrait-caption strong { font-size: 10px; }
   .portrait-orbit { width: 107%; left: -4%; }
   .hero-signature { font-size: 19.2vw; padding-bottom: 22px; letter-spacing: -.075em; }
-  .hero-signature span { margin-right: 0; }
+  .hero-signature .signature-arrow { margin-right: 0; }
   .hero-bottom { font-size: 9px; padding: 19px 0 23px; }
   .hero-bottom a { font-size: 8px; gap: 8px; }
   .work-section { padding: 64px 0; border-radius: 16px 16px 0 0; }
@@ -404,4 +408,44 @@ a.research-item:hover h3 { color: var(--cobalt); }
   .portrait-stage:hover .portrait-frame { transform: rotate(3deg); }
   .button:hover, .exploration-card:hover, .round-link:hover, .text-link:hover svg, .contact-title:hover .contact-arrow, .preview-image-button:hover .preview-image { transform: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+@keyframes portrait-drift { from { translate: 0 0; } to { translate: 0 42px; } }
+@keyframes signature-drift { from { translate: 0 0; } to { translate: -24px 0; } }
+@keyframes preview-enter { from { opacity: .55; transform: scale(1.015); } to { opacity: 1; transform: none; } }
+@keyframes dialog-enter { from { opacity: .4; transform: translateY(12px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes menu-enter { from { opacity: .4; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .preview-image { animation: preview-enter .38s cubic-bezier(.22, 1, .36, 1); }
+  .preview-dialog[open] { animation: dialog-enter .28s cubic-bezier(.22, 1, .36, 1); }
+  .primary-nav.is-open { animation: menu-enter .22s ease-out; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .button, .round-link { position: relative; isolation: isolate; overflow: hidden; }
+  .button::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: #365cf6; z-index: -1; transform: translateY(105%); transition: transform .4s cubic-bezier(.22, 1, .36, 1); }
+  .button:hover::before { transform: translateY(0); }
+  .button svg, .round-link svg, .work-card-footer a svg, .exploration-top > svg { transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
+  .button:hover svg, .work-card-footer a:hover svg { transform: translateX(3px); }
+  .work-card { transition: box-shadow .35s ease; }
+  .work-card:hover { box-shadow: inset 0 0 0 1px #20212628; }
+  .work-card-copy h3 { transition: color .25s; }
+  .work-card:hover h3 { color: var(--project-accent); }
+  .preview-image-button { transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
+  .work-card:hover .preview-image { transform: scale(1.035); }
+  .exploration-icon { transition: transform .35s cubic-bezier(.22, 1, .36, 1), background .35s; }
+  .exploration-card:hover .exploration-icon { transform: rotate(-8deg); background: #48577e; }
+  .exploration-card:hover .exploration-top > svg { transform: translate(3px, -3px); }
+}
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  [data-magnetic] { translate: var(--magnetic-x, 0px) var(--magnetic-y, 0px); transition: translate .25s cubic-bezier(.22, 1, .36, 1), transform .25s, background .25s; }
+  @supports (animation-timeline: scroll()) {
+    .portrait-stage { animation: portrait-drift linear both; animation-timeline: scroll(root block); animation-range: 0px 780px; }
+    .hero-signature-word { animation: signature-drift linear both; animation-timeline: scroll(root block); animation-range: 0px 900px; }
+  }
+}
+@media (hover: none), (pointer: coarse) {
+  .portrait-stage:hover .portrait-frame { transform: rotate(3deg); }
+  .button:hover, .exploration-card:hover, .round-link:hover, .text-link:hover svg, .contact-title:hover .contact-arrow, .preview-image-button:hover .preview-image { transform: none; }
+  .preview-dialog::backdrop { backdrop-filter: none; }
 }

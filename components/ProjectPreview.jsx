@@ -17,8 +17,8 @@ export default function ProjectPreview({ previews, name, caption, wide = false }
           {previews.map((item, index) => <button type="button" key={item.src} aria-pressed={active === index} onClick={() => setActive(index)}>{item.label}</button>)}
         </div>}
       </div>
-      <button className="preview-image-button" type="button" aria-label={`Enlarge ${name}: ${preview.label}`} onClick={() => dialog.current.showModal()}>
-        <img className="preview-image" src={preview.src} alt={preview.alt} width={preview.width} height={preview.height} loading="lazy" />
+      <button data-tilt className="preview-image-button" type="button" aria-label={`Enlarge ${name}: ${preview.label}`} onClick={() => dialog.current.showModal()}>
+        <img key={preview.src} className="preview-image" src={preview.src} alt={preview.alt} width={preview.width} height={preview.height} loading="lazy" />
         <span className="expand-label"><Expand size={16} /> Enlarge</span>
       </button>
       <p className="preview-caption">{activeCaption}</p>

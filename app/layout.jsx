@@ -1,6 +1,7 @@
 import "./globals.css";
 import localFont from "next/font/local";
 import { profile } from "@/lib/profile";
+import Motion from "@/components/Motion";
 
 const inter = localFont({ src: "./fonts/Inter.ttf", variable: "--font-inter", display: "swap" });
 const spaceGrotesk = localFont({ src: "./fonts/SpaceGrotesk.ttf", variable: "--font-display", display: "swap" });
@@ -53,6 +54,7 @@ export default function RootLayout({ children }) {
           }}
         />
         {children}
+        <Motion />
       </body>
     </html>
   );
