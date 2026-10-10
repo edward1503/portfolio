@@ -8,7 +8,9 @@ Portfolio of Nguyễn Đôn Đức (Edward), an AI researcher and engineer worki
 
 The site follows the downloaded editorial rebuild: warm ivory, forest green, serif headlines, compact navigation, and selected work before experience and research. It uses a local portrait and system fonts, so viewing the page does not require an external font or image service.
 
-Project summaries, links, technical details, and supporting evidence live in `lib/profile.js`. Project diagrams are illustrative system overviews. The HotpotQA result is labeled as a **200-query dev pilot, full-support Recall@10**, with a link to the evaluation record. Biographical information follows the supplied portfolio.
+Profile, project summaries, education, experience, skills, and honors live in `lib/profile.js`. Project diagrams are illustrative system overviews. The HotpotQA result is labeled as a **200-query dev pilot, full-support Recall@10**, with a link to the evaluation record.
+
+Biographical information was reconciled with the active LaTeX sections and the rendered CV in `D:\VSCODE\RESUME` on October 10, 2026. This includes the VinUniversity MSc starting September 2026, the Research Assistant role at CAIR, and TOEFL C1. Commented-out template entries are not treated as current resume information.
 
 All content is visible by default. Technical details use native disclosures, with keyboard focus, a skip link, labeled sections, responsive layouts, and reduced-motion support. Canonical, Open Graph, Twitter, and Person metadata are included.
 
@@ -46,4 +48,4 @@ For a root-path build in PowerShell, run `Remove-Item Env:GITHUB_PAGES -ErrorAct
 
 Pushing to `main` triggers `.github/workflows/deploy.yml`. The workflow installs from the lockfile, builds for GitHub Pages, runs the export check, and publishes `out/` to `gh-pages`. GitHub Pages then runs its own deployment workflow. The repository's Pages source must remain `gh-pages` at `/`.
 
-Downloaded rebuild files, archives, local builds, and browser review artifacts are ignored. Only the integrated application source and local portrait are committed.
+Only the integrated application source and local portrait are committed. Imported rebuild copies, archives, old empty asset/component directories, local build artifacts, and browser review files are removed after verification. Ignore rules also prevent these temporary files from being committed in later runs.

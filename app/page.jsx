@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { experience, honors, profile, projects } from "@/lib/profile";
+import { education, experience, honors, profile, projects, skillGroups } from "@/lib/profile";
 
 const navigation = [
   ["Work", "#projects"],
@@ -164,8 +164,8 @@ export default function Home() {
             </div>
             <div className="current-role">
               <span className="eyebrow">Currently</span>
-              <p>Research Assistant / Lab Coach</p>
-              <span>VinUniversity · CAIR</span>
+              <p>{experience[0].role}</p>
+              <span>{experience[0].shortOrganization}</span>
             </div>
           </aside>
         </section>
@@ -266,7 +266,8 @@ export default function Home() {
                 </OutboundLink>
               </h3>
               <p>
-                Co-authored research published in{" "}
+                Led research design, supervised implementation and experiments,
+                and presented the work. Published in{" "}
                 <em>Proceedings of Data Analytics and Management</em>, Lecture
                 Notes in Networks and Systems, vol. 1607.
               </p>
@@ -300,34 +301,26 @@ export default function Home() {
             <div className="about-copy">
               <p>{profile.summary}</p>
               <div id="skills" className="skill-groups">
-                <div>
-                  <h3>AI & research</h3>
-                  <p>
-                    Python, RAG, LLM agents, ReAct, LangChain, PyTorch,
-                    Scikit-learn, system evaluation
-                  </p>
-                </div>
-                <div>
-                  <h3>Engineering & operations</h3>
-                  <p>
-                    FastAPI, Docker, AWS, DVC, GitHub Actions, Redis, Git, Linux
-                  </p>
-                </div>
+                {skillGroups.map((group) => (
+                  <div key={group.title}>
+                    <h3>{group.title}</h3>
+                    <p>{group.skills.join(", ")}</p>
+                  </div>
+                ))}
               </div>
             </div>
             <div id="education" className="education">
               <p className="eyebrow">Education & recognition</p>
-              <h3>B.Sc. in Data Science</h3>
-              <p>University of Economics Ho Chi Minh City (UEH)</p>
-              <div className="education-detail">
-                <span>Sep 2022 — Apr 2026</span>
-                <strong>GPA 3.85 / 4.00</strong>
-              </div>
-              <p className="additional-learning">
-                AI in Action (VinUniversity)
-                <br />
-                AI VIETNAM Cohort 2025
-              </p>
+              {education.map((item) => (
+                <div className="education-entry" key={item.degree}>
+                  <h3>{item.degree}</h3>
+                  <p>{item.institution}</p>
+                  <div className="education-detail">
+                    <span>{item.period}</span>
+                    {item.detail && <strong>{item.detail}</strong>}
+                  </div>
+                </div>
+              ))}
               <ul className="honors">
                 {honors.map((honor) => (
                   <li key={honor}>{honor}</li>
