@@ -47,14 +47,16 @@ assert(!css.includes("opacity: 0"), "Content is visible by default");
 assert(css.includes("prefers-reduced-motion"), "Reduced-motion support");
 assert(css.includes("focus-visible"), "Visible keyboard focus");
 assert(css.includes("max-width: 700px"), "Mobile layout breakpoint");
+const projectCount = (html.match(/class="project-card"/g) || []).length;
+assert(projectCount > 0, "Selected projects are present");
 assert.equal(
   (html.match(/<details\b/g) || []).length,
-  2,
+  projectCount,
   "Native technical detail disclosures",
 );
 assert.equal(
   (html.match(/<summary\b/g) || []).length,
-  2,
+  projectCount,
   "Accessible disclosure labels",
 );
 for (const tag of html.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g))

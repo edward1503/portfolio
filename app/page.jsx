@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { education, experience, honors, profile, projects, skillGroups } from "@/lib/profile";
+import { additionalProjects, education, experience, honors, profile, projects, skillGroups } from "@/lib/profile";
 
 const navigation = [
   ["Work", "#projects"],
@@ -8,13 +8,14 @@ const navigation = [
   ["Contact", "#contact"],
 ];
 
-function OutboundLink({ href, children, className = "" }) {
+function OutboundLink({ href, children, className = "", ariaLabel }) {
   return (
     <a
       className={className}
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={ariaLabel}
     >
       {children}
       <ArrowUpRight size={16} aria-hidden="true" />
@@ -94,6 +95,68 @@ function RetrievalVisual() {
       </div>
     </div>
   );
+}
+
+function LegalVisual() {
+  return (
+    <div className="project-visual legal-visual" aria-hidden="true">
+      <div className="visual-topline">
+        <span>VIETNAMESE LAW</span>
+        <span>AGENTIC RAG</span>
+      </div>
+      <div className="routing-flow">
+        <span className="route-node">Query</span>
+        <span className="flow-arrow">→</span>
+        <div className="route-options">
+          <span>Hybrid</span>
+          <span>Graph</span>
+          <span>Rerank</span>
+        </div>
+        <span className="flow-arrow">→</span>
+        <span className="route-node route-answer">Cited<br />answer</span>
+      </div>
+      <div className="visual-bottomline">
+        <span>Route the question. Cite the source.</span>
+        <span>03 / SYSTEM OVERVIEW</span>
+      </div>
+    </div>
+  );
+}
+
+function PipelineVisual() {
+  return (
+    <div className="project-visual pipeline-visual" aria-hidden="true">
+      <div className="visual-topline">
+        <span>AIR QUALITY</span>
+        <span>AWS DATA PIPELINE</span>
+      </div>
+      <div className="medallion-flow">
+        {[["Bronze", "Ingest"], ["Silver", "Validate"], ["Gold", "Analyze"]].map(([layer, action]) => (
+          <div className={`medallion-stage ${layer.toLowerCase()}`} key={layer}>
+            <span className="medallion-disc" />
+            <strong>{layer}</strong>
+            <span>{action}</span>
+          </div>
+        ))}
+      </div>
+      <div className="visual-bottomline">
+        <span>Raw data to trusted tables.</span>
+        <span>04 / SYSTEM OVERVIEW</span>
+      </div>
+    </div>
+  );
+}
+
+const projectVisuals = {
+  learning: LearningVisual,
+  retrieval: RetrievalVisual,
+  legal: LegalVisual,
+  pipeline: PipelineVisual,
+};
+
+function ProjectVisual({ type }) {
+  const Visual = projectVisuals[type];
+  return Visual ? <Visual /> : null;
 }
 
 export default function Home() {
@@ -187,7 +250,7 @@ export default function Home() {
           <div className="project-grid">
             {projects.map((project, index) => (
               <article key={project.title} className="project-card">
-                {project.visual === "learning" ? <LearningVisual /> : <RetrievalVisual />}
+                <ProjectVisual type={project.visual} />
                 <div className="project-content">
                   <div className="project-kicker">
                     <span>{project.category}</span>
@@ -195,6 +258,7 @@ export default function Home() {
                   </div>
                   <h3>{project.name}</h3>
                   <p className="project-subtitle">{project.subtitle}</p>
+                  {project.role && <p className="project-role">{project.role}</p>}
                   <p className="project-summary">{project.summary}</p>
                   <div className="project-evidence">
                     <strong>{project.evidence.title}</strong>
@@ -211,15 +275,41 @@ export default function Home() {
                     </ul>
                     <p className="project-stack">{project.tags.join(" · ")}</p>
                   </details>
-                  <OutboundLink href={project.href} className="project-link">
-                    {project.linkLabel}
-                  </OutboundLink>
+                  <div className="project-links">
+                    <OutboundLink
+                      href={project.href}
+                      className="project-link"
+                      ariaLabel={`${project.linkLabel}: ${project.name}`}
+                    >
+                      {project.linkLabel}
+                    </OutboundLink>
+                  </div>
                   {project.evidence.href && (
                     <OutboundLink href={project.evidence.href} className="evidence-link">
                       View evaluation evidence
                     </OutboundLink>
                   )}
                 </div>
+              </article>
+            ))}
+          </div>
+          <div className="project-explorations">
+            <h3>Further explorations</h3>
+            {additionalProjects.map((project) => (
+              <article className="exploration-row" key={project.name}>
+                <p className="eyebrow">{project.category}</p>
+                <div>
+                  <h4>{project.name}</h4>
+                  <p className="exploration-summary">{project.summary}</p>
+                  <p className="exploration-stack">{project.tags.join(" · ")}</p>
+                </div>
+                <OutboundLink
+                  href={project.href}
+                  className="quiet-link"
+                  ariaLabel={`View project: ${project.name} on GitHub`}
+                >
+                  View project
+                </OutboundLink>
               </article>
             ))}
           </div>

@@ -12,6 +12,16 @@ Profile, project summaries, education, experience, skills, and honors live in `l
 
 Biographical information was reconciled with the active LaTeX sections and the rendered CV in `D:\VSCODE\RESUME` on October 10, 2026. This includes the VinUniversity MSc starting September 2026, the Research Assistant role at CAIR, and TOEFL C1. Commented-out template entries are not treated as current resume information.
 
+GitHub project descriptions were reviewed against repository documentation and implementation on October 10, 2026. Four featured projects are followed by two concise explorations. The VLearn entry identifies the team context and the documented Full-stack & DevOps lead role. New entries describe implemented modules and configuration; no additional benchmark scores or deployment claims were inferred from sample README output.
+
+| Project | Reviewed source |
+| --- | --- |
+| VLearn | [Team and architecture](https://github.com/edward1503/vlearn-adaptive/blob/5be3df08f04396545e6283b5adb774a85b490e72/README.md) |
+| Vietnamese Legal RAG | [Project overview](https://github.com/edward1503/Data-Science-AI-Engineering-Personal-Projects/blob/fffb5bac4824efa83264e1c55db50c056d6fe276/Agentic%20RAG%20in%20Vietnamese%20Law%20Documents/README.md), [agent routing](https://github.com/edward1503/Data-Science-AI-Engineering-Personal-Projects/blob/fffb5bac4824efa83264e1c55db50c056d6fe276/Agentic%20RAG%20in%20Vietnamese%20Law%20Documents/src/agents/rag_agent.py) |
+| Air Quality Pipeline | [Project overview](https://github.com/edward1503/Data-Science-AI-Engineering-Personal-Projects/blob/fffb5bac4824efa83264e1c55db50c056d6fe276/AWS%20Data%20Pipeline/README.md), [quality checks](https://github.com/edward1503/Data-Science-AI-Engineering-Personal-Projects/blob/fffb5bac4824efa83264e1c55db50c056d6fe276/AWS%20Data%20Pipeline/lamdas/quality_data/lamda_function.py), [orchestration](https://github.com/edward1503/Data-Science-AI-Engineering-Personal-Projects/blob/fffb5bac4824efa83264e1c55db50c056d6fe276/AWS%20Data%20Pipeline/step_functions/pipeline_orchestation.json) |
+| Explainable credit risk | [Team and project overview](https://github.com/edward1503/xAI-credit-risk/blob/8d6bf56f6c4aa093ee085931a6c0b71e44ffd20f/README.md), [explanation API](https://github.com/edward1503/xAI-credit-risk/blob/8d6bf56f6c4aa093ee085931a6c0b71e44ffd20f/api/app.py) |
+| FPT time-series forecasting | [Research overview](https://github.com/edward1503/Data-Science-AI-Engineering-Personal-Projects/blob/fffb5bac4824efa83264e1c55db50c056d6fe276/Long-Time%20Series-Forecast%20with%20RevIN%20and%20Regime%20Switch/README.md), [experiment notebook](https://github.com/edward1503/Data-Science-AI-Engineering-Personal-Projects/blob/fffb5bac4824efa83264e1c55db50c056d6fe276/Long-Time%20Series-Forecast%20with%20RevIN%20and%20Regime%20Switch/FPT_LTSF_GridSearch_Extended.ipynb) |
+
 All content is visible by default. Technical details use native disclosures, with keyboard focus, a skip link, labeled sections, responsive layouts, and reduced-motion support. Canonical, Open Graph, Twitter, and Person metadata are included.
 
 ## Local development
