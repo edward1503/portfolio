@@ -1,471 +1,90 @@
-import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { additionalProjects, education, experience, honors, profile, projects, skillGroups } from "@/lib/profile";
+import Link from "next/link";
+import { ArrowDown, ArrowRight, ArrowUpRight, Mail, Sparkles, Fingerprint, ChartNoAxesCombined, GitBranch } from "lucide-react";
+import Header from "@/components/Header";
+import ProjectPreview from "@/components/ProjectPreview";
+import { profile, projects, featuredProjects, additionalProjects, education, experience, honors, skillGroups, assetPath } from "@/lib/profile";
 
-const navigation = [
-  ["Work", "#projects"],
-  ["Research", "#research"],
-  ["About", "#about"],
-  ["Contact", "#contact"],
-];
-
-function OutboundLink({ href, children, className = "", ariaLabel }) {
-  return (
-    <a
-      className={className}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={ariaLabel}
-    >
-      {children}
-      <ArrowUpRight size={16} aria-hidden="true" />
-    </a>
-  );
-}
-
-function SectionHeading({ id, number, title, note }) {
-  return (
-    <div className="section-heading">
-      <div>
-        <span className="eyebrow section-number">{number}</span>
-        <h2 id={id}>{title}</h2>
-      </div>
-      {note && <p>{note}</p>}
-    </div>
-  );
-}
-
-function LearningVisual() {
-  return (
-    <div className="project-visual learning-visual" aria-hidden="true">
-      <div className="visual-topline">
-        <span>VLEARN</span>
-        <span>ADAPTIVE LEARNING</span>
-      </div>
-      <div className="learning-path">
-        <div className="path-step">
-          <span className="path-dot complete">✓</span>
-          <span>Assess</span>
-        </div>
-        <span className="path-connector" />
-        <div className="path-step">
-          <span className="path-dot current">
-            <span />
-          </span>
-          <span>Learn</span>
-        </div>
-        <span className="path-connector future" />
-        <div className="path-step">
-          <span className="path-dot next">↗</span>
-          <span>Adapt</span>
-        </div>
-      </div>
-      <div className="visual-bottomline">
-        <span>A path that learns with you.</span>
-        <span>01 / SYSTEM OVERVIEW</span>
-      </div>
-    </div>
-  );
-}
-
-function RetrievalVisual() {
-  return (
-    <div className="project-visual retrieval-visual" aria-hidden="true">
-      <div className="visual-topline">
-        <span>HOTPOTQA</span>
-        <span>MULTI-HOP RETRIEVAL</span>
-      </div>
-      <div className="retrieval-flow">
-        <div className="retrieval-inputs">
-          <span>BM25</span>
-          <span>Dense</span>
-        </div>
-        <span className="flow-arrow">→</span>
-        <span className="fusion-node">RRF</span>
-        <span className="flow-arrow">→</span>
-        <div className="evidence-stack">
-          <span />
-          <span />
-          <span>Evidence</span>
-        </div>
-      </div>
-      <div className="visual-bottomline">
-        <span>Find the evidence. Connect the dots.</span>
-        <span>02 / SYSTEM OVERVIEW</span>
-      </div>
-    </div>
-  );
-}
-
-function LegalVisual() {
-  return (
-    <div className="project-visual legal-visual" aria-hidden="true">
-      <div className="visual-topline">
-        <span>VIETNAMESE LAW</span>
-        <span>AGENTIC RAG</span>
-      </div>
-      <div className="routing-flow">
-        <span className="route-node">Query</span>
-        <span className="flow-arrow">→</span>
-        <div className="route-options">
-          <span>Hybrid</span>
-          <span>Graph</span>
-          <span>Rerank</span>
-        </div>
-        <span className="flow-arrow">→</span>
-        <span className="route-node route-answer">Cited<br />answer</span>
-      </div>
-      <div className="visual-bottomline">
-        <span>Route the question. Cite the source.</span>
-        <span>03 / SYSTEM OVERVIEW</span>
-      </div>
-    </div>
-  );
-}
-
-function PipelineVisual() {
-  return (
-    <div className="project-visual pipeline-visual" aria-hidden="true">
-      <div className="visual-topline">
-        <span>AIR QUALITY</span>
-        <span>AWS DATA PIPELINE</span>
-      </div>
-      <div className="medallion-flow">
-        {[["Bronze", "Ingest"], ["Silver", "Validate"], ["Gold", "Analyze"]].map(([layer, action]) => (
-          <div className={`medallion-stage ${layer.toLowerCase()}`} key={layer}>
-            <span className="medallion-disc" />
-            <strong>{layer}</strong>
-            <span>{action}</span>
-          </div>
-        ))}
-      </div>
-      <div className="visual-bottomline">
-        <span>Raw data to trusted tables.</span>
-        <span>04 / SYSTEM OVERVIEW</span>
-      </div>
-    </div>
-  );
-}
-
-const projectVisuals = {
-  learning: LearningVisual,
-  retrieval: RetrievalVisual,
-  legal: LegalVisual,
-  pipeline: PipelineVisual,
-};
-
-function ProjectVisual({ type }) {
-  const Visual = projectVisuals[type];
-  return Visual ? <Visual /> : null;
-}
+const dimensions = { "vlearn-interface.png": [1440, 900], "retrieval-benchmark.png": [1798, 1043], "retrieval-console.png": [1366, 768], "air-quality-architecture.png": [2585, 961] };
+const explorations = [projects[2], ...additionalProjects];
+const explorationIcons = [GitBranch, Fingerprint, ChartNoAxesCombined];
 
 export default function Home() {
   return (
     <>
-      <a href="#main" className="skip-link">
-        Skip to content
-      </a>
-      <header className="site-header shell">
-        <a className="wordmark" href="#top" aria-label="Edward, back to top">
-          <span className="monogram">e.</span>
-          <span>
-            Edward<span className="wordmark-dot"> / </span>
-            <span className="wordmark-role">AI researcher & engineer</span>
-          </span>
-        </a>
-        <nav aria-label="Primary navigation">
-          {navigation.map(([label, href]) => (
-            <a key={href} href={href}>
-              {label}
-            </a>
-          ))}
-        </nav>
-      </header>
-
-      <main id="main" className="shell" tabIndex={-1}>
-        <section id="top" className="hero" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow hero-eyebrow">
-              <span className="status-dot" /> Open to research & engineering
-              collaborations
-            </p>
-            <h1 id="hero-title">
-              Research,{" "}
-              <br />
-              made <em>useful.</em>
-            </h1>
-            <p className="hero-intro">
-              I’m <strong>{profile.name}</strong>, also known as Edward.
-              <br className="desktop-break" /> I build AI systems that turn
-              research into something people can use.
-            </p>
-            <p className="hero-focus">
-              Retrieval systems · LLM applications · Adaptive learning
-            </p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="#projects">
-                Explore my work <ArrowDown size={16} aria-hidden="true" />
-              </a>
-              <a className="quiet-link" href={`mailto:${profile.email}`}>
-                Get in touch <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
+      <a className="skip-link" href="#main">Skip to content</a>
+      <div className="hero-shell">
+        <Header homeHref={assetPath("")} />
+        <main id="main">
+          <section className="hero container" aria-labelledby="hero-title">
+            <div className="hero-topline"><span><i className="status-dot" /> AI researcher & engineer</span><span>Based in Vietnam ↗</span></div>
+            <div className="hero-grid">
+              <div className="hero-copy">
+                <p className="hero-greeting">Hi, I’m Nguyễn Đôn Đức.</p>
+                <h1 id="hero-title">Curious mind.<br />Useful <span>AI.</span></h1>
+                <p className="hero-description">I connect research with engineering to turn ambitious ideas into things people can use.</p>
+                <a className="button cobalt-button" href="#projects">Explore my work <ArrowDown size={19} /></a>
+              </div>
+              <div className="portrait-stage">
+                <div className="portrait-orbit" aria-hidden="true" />
+                <div className="portrait-frame"><img src={profile.avatar} alt="Nguyễn Đôn Đức, also known as Edward" width="460" height="460" fetchPriority="high" /></div>
+                <span className="portrait-sticker"><Sparkles size={19} /> Research meets real life.</span>
+                <div className="portrait-caption"><span>Currently</span><strong>Research Assistant @ CAIR<br />M.Sc. Computer Science @ VinUniversity</strong></div>
+              </div>
             </div>
-          </div>
-          <aside className="hero-profile" aria-label="About Edward">
-            <div className="portrait-frame">
-              <img
-                src={profile.avatar}
-                alt={`Portrait of ${profile.name}`}
-                width="280"
-                height="310"
-                fetchPriority="high"
-              />
-            </div>
-            <div className="portrait-caption">
-              <span>{profile.location}, Vietnam</span>
-              <span>BASED IN VIETNAM</span>
-            </div>
-            <div className="current-role">
-              <span className="eyebrow">Currently</span>
-              <p>{experience[0].role}</p>
-              <span>{experience[0].shortOrganization}</span>
-            </div>
-          </aside>
-        </section>
-
-        <section
-          id="projects"
-          className="section work-section"
-          aria-labelledby="work-heading"
-        >
-          <div className="section-heading">
-            <div>
-              <span className="eyebrow section-number">01 / SELECTED WORK</span>
-              <h2 id="work-heading">From ideas to working systems.</h2>
-            </div>
-            <OutboundLink href={profile.github} className="quiet-link">
-              More on GitHub
-            </OutboundLink>
-          </div>
-          <div className="project-grid">
-            {projects.map((project, index) => (
-              <article key={project.title} className="project-card">
-                <ProjectVisual type={project.visual} />
-                <div className="project-content">
-                  <div className="project-kicker">
-                    <span>{project.category}</span>
-                    <span>0{index + 1}</span>
-                  </div>
-                  <h3>{project.name}</h3>
-                  <p className="project-subtitle">{project.subtitle}</p>
-                  {project.role && <p className="project-role">{project.role}</p>}
-                  <p className="project-summary">{project.summary}</p>
-                  <div className="project-evidence">
-                    <strong>{project.evidence.title}</strong>
-                    <span>{project.evidence.detail}</span>
-                  </div>
-                  <details className="project-details">
-                    <summary aria-label={`Technical details for ${project.name}`}>
-                      Technical details <span aria-hidden="true">+</span>
-                    </summary>
-                    <ul>
-                      {project.outcomes.map((outcome) => (
-                        <li key={outcome}>{outcome}</li>
-                      ))}
-                    </ul>
-                    <p className="project-stack">{project.tags.join(" · ")}</p>
-                  </details>
-                  <div className="project-links">
-                    <OutboundLink
-                      href={project.href}
-                      className="project-link"
-                      ariaLabel={`${project.linkLabel}: ${project.name}`}
-                    >
-                      {project.linkLabel}
-                    </OutboundLink>
-                  </div>
-                  {project.evidence.href && (
-                    <OutboundLink href={project.evidence.href} className="evidence-link">
-                      View evaluation evidence
-                    </OutboundLink>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-          <div className="project-explorations">
-            <h3>Further explorations</h3>
-            {additionalProjects.map((project) => (
-              <article className="exploration-row" key={project.name}>
-                <p className="eyebrow">{project.category}</p>
-                <div>
-                  <h4>{project.name}</h4>
-                  <p className="exploration-summary">{project.summary}</p>
-                  <p className="exploration-stack">{project.tags.join(" · ")}</p>
-                </div>
-                <OutboundLink
-                  href={project.href}
-                  className="quiet-link"
-                  ariaLabel={`View project: ${project.name} on GitHub`}
-                >
-                  View project
-                </OutboundLink>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="experience" className="section experience-section" aria-labelledby="experience-heading">
-          <SectionHeading
-            id="experience-heading"
-            number="02 / EXPERIENCE"
-            title="Research meets practice."
-          />
-          <div className="experience-list">
-            {experience.map((item) => (
-              <article className="experience-row" key={item.organization}>
-                <p className="period">{item.period}</p>
-                <div>
-                  <h3>{item.role}</h3>
-                  <p className="organization">{item.organization}</p>
-                </div>
-                <p className="experience-description">{item.summary}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="research" className="section research-section" aria-labelledby="research-heading">
-          <SectionHeading
-            id="research-heading"
-            number="03 / RESEARCH"
-            title="Questions worth exploring."
-            note="Selected publication and thesis work."
-          />
-          <article className="research-row">
-            <div className="research-meta">
-              <span className="eyebrow">Conference paper</span>
-              <span>ICDAM 2025 · Springer</span>
-            </div>
-            <div>
-              <h3>
-                <OutboundLink href="https://doi.org/10.1007/978-3-032-03751-0_8">
-                  Comparative Analysis of LSTM, Transformer-Based LSTM and
-                  Transformer-Based GRU for Stock Price Prediction: An
-                  Implementation in Vietnam Market
-                </OutboundLink>
-              </h3>
-              <p>
-                Led research design, supervised implementation and experiments,
-                and presented the work. Published in{" "}
-                <em>Proceedings of Data Analytics and Management</em>, Lecture
-                Notes in Networks and Systems, vol. 1607.
-              </p>
-            </div>
-          </article>
-          <article className="research-row">
-            <div className="research-meta">
-              <span className="eyebrow">Graduation thesis</span>
-              <span>UEH · 2025</span>
-            </div>
-            <div>
-              <h3>
-                A performance insight for combining loss functions in
-                deep-learning regression
-              </h3>
-              <p>
-                Introduced Hybrid-Log Loss and evaluated it against conventional
-                and blended loss functions across practical datasets.
-              </p>
-            </div>
-          </article>
-        </section>
-
-        <section id="about" className="section about-section" aria-labelledby="about-heading">
-          <SectionHeading
-            id="about-heading"
-            number="04 / A LITTLE CONTEXT"
-            title="Curious by nature. Practical by approach."
-          />
-          <div className="about-grid">
-            <div className="about-copy">
-              <p>{profile.summary}</p>
-              <div id="skills" className="skill-groups">
-                {skillGroups.map((group) => (
-                  <div key={group.title}>
-                    <h3>{group.title}</h3>
-                    <p>{group.skills.join(", ")}</p>
-                  </div>
+            <div className="hero-signature" aria-hidden="true">EDWARD<span>↗</span></div>
+            <div className="hero-bottom"><span>Retrieval · AI products · Data systems</span><a href="#projects">SCROLL TO EXPLORE <ArrowDown size={15} /></a></div>
+          </section>
+          <section id="projects" className="work-section" aria-labelledby="work-heading">
+            <div className="container">
+              <div className="section-heading"><div><p className="section-index">01 / SELECTED WORK</p><h2 id="work-heading">Built with curiosity.<br /><span>Backed by work.</span></h2></div><p>A closer look at the products,<br className="desktop-break" /> experiments, and systems I build.</p></div>
+              <div className="work-grid">
+                {featuredProjects.map((project, index) => (
+                  <article className={"work-card work-card-" + project.slug + " theme-" + project.theme} key={project.slug}>
+                    <div className="work-card-heading"><span className="project-number">0{index + 1}</span><span className="project-category">{project.category}</span><Link className="round-link" href={"/work/" + project.slug + "/"} aria-label={"Read " + project.name + " case study"}><ArrowUpRight size={25} /></Link></div>
+                    <div className="work-card-copy"><Link href={"/work/" + project.slug + "/"}><h3>{project.featureTitle}</h3></Link><p>{project.summary}</p></div>
+                    <ProjectPreview name={project.name} caption={project.previewLabel} wide={project.slug === "air-quality"} previews={project.previews.map((preview) => ({ ...preview, src: assetPath("projects/" + preview.src), width: dimensions[preview.src][0], height: dimensions[preview.src][1] }))} />
+                    <div className="work-card-footer"><span>{project.slug === "hotpotqa" ? "60.08% full-support Recall@10 · test run" : project.slug === "vlearn" ? "Team project / Full-stack & DevOps lead" : "AWS / Quality-gated ETL"}</span><Link href={"/work/" + project.slug + "/"}>Case study <ArrowRight size={17} /></Link></div>
+                  </article>
                 ))}
               </div>
             </div>
-            <div id="education" className="education">
-              <p className="eyebrow">Education & recognition</p>
-              {education.map((item) => (
-                <div className="education-entry" key={item.degree}>
-                  <h3>{item.degree}</h3>
-                  <p>{item.institution}</p>
-                  <div className="education-detail">
-                    <span>{item.period}</span>
-                    {item.detail && <strong>{item.detail}</strong>}
-                  </div>
-                </div>
-              ))}
-              <ul className="honors">
-                {honors.map((honor) => (
-                  <li key={honor}>{honor}</li>
-                ))}
-              </ul>
+          </section>
+          <section className="explorations-section" aria-labelledby="explorations-heading">
+            <div className="container">
+              <div className="section-heading compact-heading"><div><p className="section-index">02 / MORE EXPLORATIONS</p><h2 id="explorations-heading">Always asking “what if?”</h2></div><a className="text-link" href={profile.github} target="_blank" rel="noopener noreferrer">All projects on GitHub <ArrowUpRight size={18} /></a></div>
+              <div className="exploration-grid">
+                {explorations.map((project, index) => { const Icon = explorationIcons[index]; return (
+                  <a className="exploration-card" key={project.name} href={project.href} target="_blank" rel="noopener noreferrer">
+                    <div className="exploration-top"><span className="exploration-icon"><Icon size={28} strokeWidth={1.5} /></span><ArrowUpRight size={23} /></div>
+                    <p className="eyebrow">{project.category}</p><h3>{project.name}</h3><p>{project.summary}</p><div className="tag-list">{project.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}</div>
+                  </a>
+                ); })}
+              </div>
             </div>
-          </div>
-        </section>
-
-        <section
-          id="contact"
-          className="contact-section"
-          aria-labelledby="contact-heading"
-        >
-          <div>
-            <p className="eyebrow">
-              <span className="status-dot" /> LET’S CONNECT
-            </p>
-            <h2 id="contact-heading">
-              Have a good problem{" "}
-              <br />
-              in <em>mind?</em>
-            </h2>
-            <p>
-              Open to AI research, LLM/RAG engineering,
-              <br className="desktop-break" /> and quantitative systems
-              collaborations.
-            </p>
-          </div>
-          <div className="contact-actions">
-            <a className="contact-email" href={`mailto:${profile.email}`}>
-              Let’s talk <ArrowUpRight size={32} aria-hidden="true" />
-            </a>
-            <a className="email-address" href={`mailto:${profile.email}`}>
-              {profile.email}
-            </a>
-            <div className="social-links">
-              <OutboundLink href={profile.github}>GitHub</OutboundLink>
-              <OutboundLink href={profile.linkedin}>LinkedIn</OutboundLink>
-              <OutboundLink href={profile.huggingFace}>
-                Hugging Face
-              </OutboundLink>
+          </section>
+          <section id="about" className="about-section container" aria-labelledby="about-heading">
+            <div className="about-heading"><p className="section-index">03 / A LITTLE ABOUT ME</p><h2 id="about-heading">Researcher by curiosity.<br />Engineer by practice.</h2></div>
+            <div className="about-grid">
+              <div className="about-copy"><p className="large-copy">I’m Edward — an AI researcher and engineer who enjoys the space between a promising idea and a useful system.</p><p>{profile.summary}</p><p>Today, I’m a Research Assistant at VinUniversity’s Center for AI Research and an M.Sc. Computer Science student. My background in data science keeps me grounded in experiments, evidence, and the questions behind the numbers.</p><a className="text-link" href={profile.linkedin} target="_blank" rel="noopener noreferrer">More about me on LinkedIn <ArrowUpRight size={18} /></a></div>
+              <div className="about-toolbox"><p className="eyebrow">MY TOOLBOX</p>{skillGroups.map((group) => <div className="toolbox-group" key={group.title}><h3>{group.title}</h3><div className="tag-list">{group.skills.map((skill) => <span key={skill}>{skill}</span>)}</div></div>)}<p className="toolbox-note">Start with the problem. Choose the tools that fit.</p></div>
             </div>
-          </div>
-        </section>
-      </main>
-      <footer className="site-footer shell">
-        <p>
-          © {new Date().getFullYear()} {profile.name}
-        </p>
-        <span>Thoughtfully built. Always learning.</span>
-        <a href="#top">
-          Back to top <ArrowUpRight size={14} aria-hidden="true" />
-        </a>
-      </footer>
+          </section>
+          <section id="experience" className="experience-section container" aria-labelledby="experience-heading">
+            <div className="section-heading compact-heading"><div><p className="section-index">04 / THE JOURNEY</p><h2 id="experience-heading">Learning. Building. Growing.</h2></div></div>
+            <div className="journey-grid"><div><h3 className="column-label">Experience</h3>{experience.map((item) => <article className="journey-item" key={item.role}><span className="journey-period">{item.period}</span><h4>{item.role}</h4><p className="journey-organization">{item.shortOrganization || item.organization}</p><p>{item.summary}</p></article>)}</div><div><h3 className="column-label">Education</h3>{education.map((item) => <article className="education-item" key={item.degree}><span className="journey-period">{item.period}</span><h4>{item.degree}</h4><p>{item.institution}</p>{item.detail && <span className="education-detail">{item.detail}</span>}</article>)}</div></div>
+            <div className="recognition-strip">{honors.map((item) => <span key={item}>{item}</span>)}</div>
+          </section>
+          <section className="research-section container" aria-labelledby="research-heading">
+            <p className="section-index">05 / RESEARCH NOTES</p><div className="research-grid"><div><h2 id="research-heading">Ideas worth<br />looking closer at.</h2><p>Questions about models, markets,<br className="desktop-break" /> and what the evidence actually says.</p></div><div>
+              <a className="research-item" href="https://doi.org/10.1007/978-3-032-03751-0_8" target="_blank" rel="noopener noreferrer"><div className="research-meta"><span>PUBLICATION / ICDAM 2025</span><ArrowUpRight size={22} /></div><h3>Comparative Analysis of LSTM, Transformer-Based LSTM and Transformer-Based GRU for Stock Price Prediction: An Implementation in Vietnam Market</h3><p>Led the research design, supervised implementation and experiments, and presented the work at ICDAM 2025. Published by Springer.</p></a>
+              <article className="research-item"><div className="research-meta"><span>UNDERGRADUATE THESIS / 2025</span></div><h3>Hybrid-Log Loss for deep-learning regression</h3><p>Explored a combined loss formulation using characteristics of L₁ and L₂ losses, with comparison against conventional and blended losses on regression datasets.</p></article>
+            </div></div>
+          </section>
+          <section id="contact" className="contact-section" aria-labelledby="contact-heading">
+            <div className="container"><div className="contact-top"><span className="section-index">HAVE A QUESTION OR AN IDEA?</span><span>Let’s make something useful.</span></div><a className="contact-title" href={"mailto:" + profile.email}><h2 id="contact-heading">Let’s talk.</h2><span className="contact-arrow"><ArrowUpRight strokeWidth={1.2} /></span></a><div className="contact-bottom"><a className="email-link" href={"mailto:" + profile.email}><Mail size={20} />{profile.email}</a><div className="social-links"><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub<ArrowUpRight size={15} /></a><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ArrowUpRight size={15} /></a><a href={profile.huggingFace} target="_blank" rel="noopener noreferrer">Hugging Face<ArrowUpRight size={15} /></a></div></div><footer className="site-footer"><span>© 2026 Nguyễn Đôn Đức / Edward</span><span>Research. Build. Refine.</span><a href="#main">Back to top ↑</a></footer></div>
+          </section>
+        </main>
+      </div>
     </>
   );
 }

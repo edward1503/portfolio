@@ -1,5 +1,9 @@
 import "./globals.css";
+import localFont from "next/font/local";
 import { profile } from "@/lib/profile";
+
+const inter = localFont({ src: "./fonts/Inter.ttf", variable: "--font-inter", display: "swap" });
+const spaceGrotesk = localFont({ src: "./fonts/SpaceGrotesk.ttf", variable: "--font-display", display: "swap" });
 
 const siteUrl = "https://edward1503.github.io/portfolio/";
 const title = "Nguyễn Đôn Đức (Edward) | AI Researcher & Engineer";
@@ -26,12 +30,12 @@ export const metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#f8f8f3",
+  themeColor: "#202126",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body>
         <script
           type="application/ld+json"
