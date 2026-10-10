@@ -6,3 +6,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .env*.local
+edward-portfolio-rebuild/
+edward-portfolio-rebuild.zip
+output/

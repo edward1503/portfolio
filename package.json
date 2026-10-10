@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:export": "node scripts/check-export.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.17.0",

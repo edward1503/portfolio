@@ -33,6 +33,11 @@ jobs:
         env:
           GITHUB_PAGES: 'true'
 
+      - name: Verify exported site
+        run: npm run test:export
+        env:
+          GITHUB_PAGES: 'true'
+
       - name: Prepare Pages artifact
         run: touch out/.nojekyll
 

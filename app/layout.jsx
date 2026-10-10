@@ -1,33 +1,55 @@
-import './globals.css';
-import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
+import "./globals.css";
+import { profile } from "@/lib/profile";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-heading', display: 'swap' });
-const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' });
+const siteUrl = "https://edward1503.github.io/portfolio/";
+const title = "Nguyễn Đôn Đức (Edward) | AI Researcher & Engineer";
+const description = "Portfolio of Nguyễn Đôn Đức (Edward), AI Researcher & Engineer specializing in RAG, LLM applications, adaptive learning, and quantitative research.";
 
 export const metadata = {
-  metadataBase: new URL('https://edward1503.github.io/portfolio/'),
-  title: 'Nguyễn Đôn Đức (Edward) | AI Researcher & Engineer',
-  description:
-    'Portfolio of Nguyễn Đôn Đức (Edward), AI Researcher & Engineer specializing in RAG, LLM applications, adaptive learning, and quantitative research.',
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  alternates: { canonical: siteUrl },
+  authors: [{ name: profile.name, url: profile.github }],
   openGraph: {
-    title: 'Nguyễn Đôn Đức (Edward) | AI Researcher & Engineer',
-    description: 'RAG, LLM applications, adaptive learning, and quantitative research.',
-    type: 'website'
-  }
+    title,
+    description,
+    type: "website",
+    url: siteUrl,
+    siteName: "Edward Portfolio",
+    locale: "en_US",
+    images: [{ url: `${siteUrl}portrait.jpg`, alt: `Portrait of ${profile.name}` }],
+  },
+  twitter: { card: "summary", title, description, images: [`${siteUrl}portrait.jpg`] },
 };
 
 export const viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
-  themeColor: '#f8fafc'
+  themeColor: "#f8f8f3",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable} ${mono.variable}`}>
-      <body>{children}</body>
+    <html lang="en">
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: profile.name,
+              alternateName: profile.alias,
+              url: siteUrl,
+              image: `${siteUrl}portrait.jpg`,
+              jobTitle: "AI Researcher & Engineer",
+              sameAs: [profile.github, profile.linkedin, profile.huggingFace],
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
-
